@@ -1,5 +1,5 @@
 /* ================================================================================================================== */
-/* GLOBAL FORMATTING HANDLES */
+/* GLOBAL FORMATTING HANDLES ======================================================================================== */
 /* ================================================================================================================== */
 
 :root {
@@ -46,17 +46,24 @@
     --rad-1: 8px;  /*  */
     --rad-2: 16px; /* main box radius */
 
+
+
+    /* random vraiables timeline */
     --timeline-w-date: 92px;
     --timeline-w-track: 40px;
     --timeline-w-circle-big: 24px;
     --timeline-w-circle-small: 12px;
 
+    /* random vars skillbar */
+    --skillbar-w-pill: 30px;
+    --skillbar-h-pill-big: 10px;
+    --skillbar-h-pill-small: 6px;
 }
 
 
 
 /* ================================================================================================================== */
-/* GLOBAL CSS (RE)SETS */
+/* GLOBAL CSS (RE)SETS ============================================================================================== */
 /* ================================================================================================================== */
 
 *, *::before, *::after { 
@@ -82,7 +89,7 @@ html {
 
 
 /* ================================================================================================================== */
-/* GENERIC FORMATTING */
+/* GENERIC FORMATTING =============================================================================================== */
 /* ================================================================================================================== */
 
 body { 
@@ -93,7 +100,6 @@ body {
     flex-direction: column;
     align-items: center;
 }
-
 .A4 {
     background-color: var(--col-paper);
     width: 1000px;
@@ -109,18 +115,8 @@ body {
 }
 
 
-
-/* Timeline ========================================================================================================= */
-.timeline {
-    grid-area: right;
-    display: flex;
-    flex-direction: column;
-    color: var(--col-black);
-    width: 100%;
-}
-
-
-.timeline-header {
+.sectionheader {
+    /* basic stylilng for all the section headers (excluding individual placement) */
     background-color: var(--col-blue-400);
     color: var(--col-paper);
     font-weight: bolder;
@@ -128,8 +124,27 @@ body {
     letter-spacing: var(--font-wide-spacing);
     padding-block: var(--len-2);
     padding-inline: var(--len-4);
-    margin-bottom: var(--len-5);
     border-radius: var(--rad-2);
+}
+
+
+/* Timeline (Work Experience & Education) =========================================================================== */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    color: var(--col-black);
+    width: 100%;
+}
+.timeline.workexperience {
+    grid-area: right;
+}
+.timeline.education {
+    grid-area: right;
+}
+
+
+.timeline-header {
+    margin-bottom: var(--len-5);
 }
 .timeline-header + .timeline-item .timeline-line {
     /* selects for the timeline-item that immediately follow the header - so the first element */
@@ -271,6 +286,122 @@ body {
 }
 
 
+/* skillbar ========================================================================================================= */
+.skillbar {
+    display: flex;
+    flex-direction: column;
+    padding: var(--len-4);
+    background-color: var(--col-base-100);
+    border-radius: var(--rad-2);
+    align-self: start;
+}
+
+
+.skillbar-header {
+    outline: var(--len-1) solid var(--col-paper);
+    margin-top: calc(-1 * var(--len-4));
+    margin-inline: calc(-1 * var(--len-4));
+    margin-bottom: var(--len-4);
+}
+
+
+.skillbar-item {
+    /* one row entry for the skillbar with name + 4 pills. special here: the children don't have classes to keep things simple. they are just automatically funneled into their correct position according to the html order of elements */
+    display: grid;
+    color: var(--col-black);
+    grid-template-columns: auto repeat(4, var(--skillbar-w-pill));
+    gap: var(--len-1);
+}
+.skillbar-item > * {
+    /* applies to all the children, name + 4pills */
+    align-self: center; /* keeps everything center in case either the text or the pills get way taller */
+    font-variant-caps: small-caps;
+    font-weight: bold;
+}
+.skillbar-item.subitem > :not(.skillbar-pill) {
+    /* only the subitem labels need to be normal weight (pills don't really matter, just in case) */
+    font-weight: normal;
+}
+.skillbar-item.subitem {
+    /* indent all subitems */
+    padding-left: var(--len-2);
+}
+
+.skillbar-item:not(:has(+ .skillbar-item.subitem)):not(:last-child) {
+    /* B + A combinator gives easy access to A directly after B sibling. buut there is no inverse - e.g. A before B sibling. this way, give each skillbar-item that IS NOT followed by a subitem a margin. also exclude the last element of the skills list! */
+    margin-bottom: var(--len-4);
+}
+
+
+/* legend ------------------------------------------------------------------- */
+.skillbar-item > .skillbar-legend {
+    /* only the very top skillbar item is a legend with the pill labels */
+    color: var(--col-blue-400);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    align-self: end;
+    justify-self: center;
+}
+
+
+/* pills -------------------------------------------------------------------- */
+.skillbar-item .skillbar-pill {
+    /* main pill */
+    width: 100%;
+    height: var(--skillbar-h-pill-big);
+    border-radius: 9999px; /* browser scales this to 50% of the smallest side */
+    background-color: var(--col-base-500);
+}
+.skillbar-item.subitem .skillbar-pill {
+    /* subitem pill */
+    width: 80%;
+    height: var(--skillbar-h-pill-small);
+    margin: auto;
+}
+.skillbar-item.lvl1 > .skillbar-pill:nth-child(-n + 1 of .skillbar-pill),
+.skillbar-item.lvl2 > .skillbar-pill:nth-child(-n + 2 of .skillbar-pill), 
+.skillbar-item.lvl3 > .skillbar-pill:nth-child(-n + 3 of .skillbar-pill),
+.skillbar-item.lvl4 > .skillbar-pill {
+    /* -n+B is trick for [0-B] because -n goes backwards in steps of 1 and starts at 0, negative outcomes don't work. this would also work without ".of skillbar-pill" but then the name needs to be taken into account too (every nth-child +1). this way, selector only "considers" the children that have .skillbar-pill */
+    background-color: var(--col-blue-400); /* coloring pills according to level */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .skillbar-name {
+    color: black;
+    font-weight: 700;
+    font-size: xx-large;
+    letter-spacing: 0.16em;
+    align-content: center;
+    text-align: center;
+    width: 75%;
+    margin-top: calc(0.4 * var(--h-banner-top) - 0.5lh);
+    margin-bottom: calc(0.5 * var(--h-banner-top) - 0.5lh);
+  
+}
+.skillbar-portrait {
+    width: 75%;
+    aspect-ratio: 0.8;
+    object-fit: cover;
+    margin-top: -20px;
+    margin-bottom: 40px;
+    margin-inline: auto;
+    border-radius: var(--cv-border-radius);
+    outline: 8px solid var(--col-cv-paper);
+} */
 
 
 

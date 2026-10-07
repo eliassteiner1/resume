@@ -1,0 +1,23 @@
+<div class="skillbar">
+
+    <div class="skillbar-header sectionheader">{{ include.title }}</div>
+
+    <div class="skillbar-item legend">
+        <p></p>
+        <div class="skillbar-legend">Entry</div>
+        <div class="skillbar-legend">Basic</div>
+        <div class="skillbar-legend">Solid</div>
+        <div class="skillbar-legend">Adept</div>
+    </div>
+
+    {% for item in include.items %}
+        {% include skillbar_item.html item=item %}
+
+        {% for subitem in item.subitems %}
+            {% include skillbar_item.html item=subitem sub=true %}
+
+        {% endfor %}
+    {% endfor %}
+
+
+</div>

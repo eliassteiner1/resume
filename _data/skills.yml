@@ -1,0 +1,24 @@
+# level: 1 = Entry, 2 = Basic, 3 = Solid, 4 = Adept
+
+- name: "Python"
+  level: 4
+  subitems:
+    - name: "Pytorch"
+      level: 1
+    - name: "Numpy & Pandas"
+      level: 1
+
+- name: "C++"
+  level: 1
+
+- name: "microsoft office"
+  level: 2
+  subitems:
+    - name: "Pytorch"
+      level: 2
+
+- name: "C++"
+  level: 1
+
+- name: "Matlab"
+  level: 1

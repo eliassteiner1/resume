@@ -7,19 +7,29 @@ permalink: /
 <!-- timeline blocks are reused. to differentiate in css, needs one extra class as an identifier -->
 
 <div class="A4">
+
+    {% 
+        include skillbar.html
+        title="Additional Skills"
+        items=site.data.skills
+    %}
+
     {% 
         include timeline.html 
         title="Work Experience" 
-        items=site.data.work_exp 
+        items=site.data.workexperience
         extraclass="workexperience"
     %}
+
 </div>
 
 <div class="A4">
+
     {% 
         include timeline.html 
         title="Education" 
         items=site.data.education 
         extraclass="education"
     %}
+
 </div>
