@@ -1,0 +1,281 @@
+/* ================================================================================================================== */
+/* GLOBAL FORMATTING HANDLES */
+/* ================================================================================================================== */
+
+:root {
+    /* main formatting handles to easily adjust colors and the size of some elements or variables. :root selects the <html> element -> applies to everything */
+
+    --font-fam: "Segoe UI";
+    --font-base-size: large;
+    --font-wide-spacing: 0.16em;
+
+    /* flexoki base greyscale */
+    --col-black:    #100F0F;
+    --col-base-950: #1C1B1A;
+    --col-base-900: #282726;
+    --col-base-850: #343331;
+    --col-base-800: #403E3C;
+    --col-base-700: #575653;
+    --col-base-600: #6F6E69;
+    --col-base-500: #878580;
+    --col-base-300: #B7B5AC;
+    --col-base-200: #CECDC3;
+    --col-base-150: #DAD8CE;
+    --col-base-100: #E6E4D9;
+    --col-base-050: #F2F0E5;
+    --col-paper:    #FFFCF0;
+
+    /* flexoki accent colors (400 variants) */
+    --col-red-400:     #D14D41;
+    --col-orange-400:  #DA702C;
+    --col-yellow-400:  #D0A215;
+    --col-green-400:   #879A39;
+    --col-cyan-400:    #3AA99F;
+    --col-blue-400:    #4385BE;
+    --col-purple-400:  #8B7EC8;
+    --col-magenta-400: #CE5D97;
+
+    /* length units to have a consistent design */
+    --len-1: 4px;  /* divider lines */
+    --len-2: 8px;  /* small padding */
+    --len-3: 12px; /* medium padding */
+    --len-4: 20px; /* large padding */
+    --len-5: 40px; /* huge padding */
+
+    /* border radiuses */
+    --rad-1: 5px;  /*  */
+    --rad-2: 10px; /* main box radius */
+    --rad-3: 15px; /*  */
+
+
+    --timeline-w-date: 92px;
+    --timeline-w-track: 40px;
+    --timeline-w-circle-big: 24px;
+    --timeline-w-circle-small: 12px;
+
+}
+
+
+
+/* ================================================================================================================== */
+/* GLOBAL CSS (RE)SETS */
+/* ================================================================================================================== */
+
+*, *::before, *::after { 
+    /* the wildcard selects EVERY element. this is helpful for (re)setting some basic properties to start with predictable formatting and remove defaults */
+
+    box-sizing: border-box; /* makes everything use the border-box model (sizing applies to border+padding) */
+    margin: 0; /* remove all default margins to start from a clean slate */
+    padding: 0; /* remove all default paddings to start from a clean slate */
+}
+
+svg, img { 
+  display: block; /* display images and svgs as block and not as text (which can add weird spacing) */
+}
+
+body {
+  min-height: 100vh; /* makes sure that content occupies the entire screen (more predictable for designing & footer) */
+}
+
+html {
+  scrollbar-gutter: stable; /* always keeps the space for scrollbar reserved */
+}
+
+
+
+/* ================================================================================================================== */
+/* GENERIC FORMATTING */
+/* ================================================================================================================== */
+
+body { 
+    font-family: var(--font-fam);
+    font-size: var(--font-base-size);
+    background-color: var(--col-black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.A4 {
+    background-color: var(--col-paper);
+    width: 1000px;
+    aspect-ratio: 1/sqrt(2); /* to get DIN A format */
+    margin: var(--len-5);
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
+    grid-template-rows: minmax(0, 1fr);
+    grid-template-areas: 
+        "left right";
+    column-gap: var(--len-4);
+    padding: var(--len-4);
+}
+
+
+
+/* Timeline ========================================================================================================= */
+.timeline {
+    grid-area: right;
+    display: flex;
+    flex-direction: column;
+    color: var(--col-black);
+    width: 100%;
+}
+
+
+.timeline-header {
+    background-color: var(--col-blue-400);
+    color: var(--col-paper);
+    font-weight: bolder;
+    font-size: larger;
+    letter-spacing: var(--font-wide-spacing);
+    padding-block: var(--len-2);
+    padding-inline: var(--len-4);
+    margin-bottom: var(--len-5);
+    border-radius: var(--rad-2);
+}
+.timeline-header + .timeline-item .timeline-line {
+    /* selects for the timeline-item that immediately follow the header - so the first element */
+    top: calc(-1.0 * var(--len-5) + var(--len-1)); /* begin at the header */
+    height: calc(101% + var(--len-5) - var(--len-1)); /* extends line */
+}
+
+
+.timeline-item {
+    /* main row-entry for the timeline (has a grid with date - track - contentbox */
+    display: grid;
+    grid-template-columns: var(--timeline-w-date) var(--timeline-w-track) minmax(0, 1fr);
+}
+  
+
+/* timeline-date ------------------------------------------------------------ */
+.timeline-date {
+    font-weight: bold;
+    text-align: right;
+    padding-top: calc(var(--len-3) + 0.5lh); /* mimic the padding of contentbox */
+}
+.timeline-item.subitem .timeline-date {
+    padding-top: calc(var(--len-3) + var(--len-1)); /* compensate for divider line on subitem */
+    font-weight: normal;
+}
+
+
+/* timeline-track ----------------------------------------------------------- */
+.timeline-track {
+    position: relative;
+}
+.timeline-line {
+    position: absolute;
+    left: 50%; /* centering the line horizontally */
+    top: 0; /* technically implied, but more robust to write it */
+    translate: -50% 0; /* for really centering the line and taking into account it's own width*/
+    width: var(--len-1);
+    height: 101%; /* add sliiightly more height to not get visual separations */
+    background-color: var(--col-base-500);
+} 
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    top: calc(var(--len-3) + 0.5lh + 0.5lh); /* mimic the padding of contentbox */
+    translate: -50% -50%;
+    width: var(--timeline-w-circle-big);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: var(--len-1) solid var(--col-paper);
+    background-color: var(--col-blue-400);
+}
+.timeline-item.subitem .timeline-dot {
+    border-color: var(--col-blue-400);
+    background-color: var(--col-paper);
+    outline: var(--len-1) solid var(--col-paper);
+    width: var(--timeline-w-circle-small);
+    aspect-ratio: 1;
+    top: calc(var(--len-3) + 0.5lh + var(--len-1)); /* compensate for the divider line */
+  
+}
+
+/* timeline-contentbox ------------------------------------------------------ */
+.timeline-contentbox {
+    padding: var(--len-3);
+    padding-top: calc(var(--len-3) + 0.5lh); /* add some more space for the overlapping loc -> half a line h */
+    border-radius: var(--rad-2);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+      "title"
+      "desc";
+    background-color: var(--col-base-100);
+    position: relative;
+}
+.timeline-item.subitem .timeline-contentbox {
+    /* just base properties for any subitem contentbox. generally don't need borders */
+    border-radius: 0px;
+    padding-top: var(--len-3); /* revert larger padding at top since no location on subitems! */
+    border-top: var(--len-1) solid var(--col-paper); /* add divider line */
+}
+.timeline-item:not(.subitem):has(+ .subitem) .timeline-contentbox {
+    /* selects every main item (not subitem) that is immediately followed by a subitem -> doesn't need the bottom borders since block will continue */
+    border-radius: var(--rad-2) var(--rad-2) 0px 0px;
+}
+.timeline-item:not(:has(+ .subitem)):not(:last-child) .timeline-contentbox {
+    /* only margins EVERY item that is NOT followed by a subitem and that is not last in the timeline */
+    margin-bottom: var(--len-5);
+}
+.timeline-item.subitem:not(:has(+ .subitem)) .timeline-contentbox {
+    /* only last subitem of a block needs a bottom radius */
+    border-radius: 0px 0px var(--rad-2) var(--rad-2);
+}
+.timeline-title {
+    grid-area: title;
+    font-variant-caps: small-caps;
+    font-weight: bold;
+    color: var(--col-blue-400);
+}
+.timeline-item.subitem .timeline-title {
+    font-weight: normal;
+}
+.timeline-loc {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    translate: 0 -50%;
+    text-align: right;
+    font-weight: bold;
+    color: var(--col-base-500);
+    border-radius: var(--rad-2) var(--rad-2) 0 var(--rad-2);
+    padding-inline: var(--len-3);
+    padding-block: var(--len-1);
+    background-color: var(--col-base-100);
+    outline: var(--len-1) solid var(--col-paper);
+    display: flex;
+    flex-direction: row;
+}
+.timeline-item.subitem .timeline-loc {
+    display: none; /* subitems don't show a location */
+}
+.timeline-locicon {
+    align-self: center;
+    background-color: var(--col-base-500);
+    mask: url("../images/icon_location.png") center / contain no-repeat;
+    margin-left: calc(0.5*var(--len-3));
+    width: 0.9lh;
+    aspect-ratio: 1;
+} 
+.timeline-desc {
+    grid-area: desc;
+    padding-top: var(--len-1);
+    font-weight: lighter;
+  
+}
+.timeline-desc:empty {
+    display: none;
+}
+  
+ 
+
+
+/* show all boxes with a slight background and slight outline */
+/* * {
+  background-color: rgb(255 0 0 / 0.02) !important;
+  outline: 1px solid rgb(255 0 0 / 0.2) !important;
+} */
