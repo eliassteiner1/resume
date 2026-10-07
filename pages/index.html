@@ -4,11 +4,22 @@ title: my resume
 permalink: /
 ---
 
+<!-- timeline blocks are reused. to differentiate in css, needs one extra class as an identifier -->
 
 <div class="A4">
-    {% include timeline.html %}
+    {% 
+        include timeline.html 
+        title="Work Experience" 
+        items=site.data.work_exp 
+        extraclass="workexperience"
+    %}
 </div>
 
 <div class="A4">
-    page2
+    {% 
+        include timeline.html 
+        title="Education" 
+        items=site.data.education 
+        extraclass="education"
+    %}
 </div>

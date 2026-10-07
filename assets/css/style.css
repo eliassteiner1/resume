@@ -36,17 +36,15 @@
     --col-magenta-400: #CE5D97;
 
     /* length units to have a consistent design */
-    --len-1: 4px;  /* divider lines */
+    --len-1: 4px;  /* divider lines & xtrasmall padding */
     --len-2: 8px;  /* small padding */
     --len-3: 12px; /* medium padding */
     --len-4: 20px; /* large padding */
-    --len-5: 40px; /* huge padding */
+    --len-5: 36px; /* huge padding */
 
     /* border radiuses */
-    --rad-1: 5px;  /*  */
-    --rad-2: 10px; /* main box radius */
-    --rad-3: 15px; /*  */
-
+    --rad-1: 8px;  /*  */
+    --rad-2: 16px; /* main box radius */
 
     --timeline-w-date: 92px;
     --timeline-w-track: 40px;
@@ -193,6 +191,7 @@ body {
   
 }
 
+
 /* timeline-contentbox ------------------------------------------------------ */
 .timeline-contentbox {
     padding: var(--len-3);
@@ -242,7 +241,7 @@ body {
     text-align: right;
     font-weight: bold;
     color: var(--col-base-500);
-    border-radius: var(--rad-2) var(--rad-2) 0 var(--rad-2);
+    border-radius: var(--rad-1) var(--rad-1) 0 var(--rad-1);
     padding-inline: var(--len-3);
     padding-block: var(--len-1);
     background-color: var(--col-base-100);
@@ -270,8 +269,9 @@ body {
 .timeline-desc:empty {
     display: none;
 }
-  
- 
+
+
+
 
 
 /* show all boxes with a slight background and slight outline */
