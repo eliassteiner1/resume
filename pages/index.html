@@ -8,6 +8,7 @@ permalink: /
 
 <div class="A4">
 
+
     {% 
         include skillbar.html
         title="Additional Skills"
@@ -25,11 +26,18 @@ permalink: /
 
 <div class="A4">
 
+    {%
+        include langs.html
+        title="my Languages"
+    %}
+
     {% 
         include timeline.html 
         title="Education" 
         items=site.data.education 
         extraclass="education"
     %}
+
+
 
 </div>

@@ -1,0 +1,12 @@
+{% capture content %}
+    <p>this is piped through from caputerè</p>
+
+    
+{% endcapture %}
+
+<!-- fills all content into the reusable container with header -->
+{% 
+    include basecontainer.html
+    title=include.title
+    content=content
+%}

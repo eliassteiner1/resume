@@ -375,33 +375,29 @@ body {
 
 /* TODO: make one base "main element" / main container class that every element besides the timelines uses. this will just format the header + a grey box -> should work for all of them */
 
-
-
-
-
-
-/* .skillbar-name {
-    color: black;
-    font-weight: 700;
-    font-size: xx-large;
-    letter-spacing: 0.16em;
-    align-content: center;
-    text-align: center;
-    width: 75%;
-    margin-top: calc(0.4 * var(--h-banner-top) - 0.5lh);
-    margin-bottom: calc(0.5 * var(--h-banner-top) - 0.5lh);
-  
+.basecontainer {
+    background-color: var(--col-base-100);
+    border-radius: var(--rad-2);
+    display: flex;
+    flex-direction: column;
 }
-.skillbar-portrait {
-    width: 75%;
-    aspect-ratio: 0.8;
-    object-fit: cover;
-    margin-top: -20px;
-    margin-bottom: 40px;
-    margin-inline: auto;
-    border-radius: var(--cv-border-radius);
-    outline: 8px solid var(--col-cv-paper);
-} */
+.basecontainer-header {
+    /* basic stylilng for all the section headers (excluding individual placement) */
+    background-color: var(--col-blue-400);
+    color: var(--col-paper);
+    font-weight: bolder;
+    font-size: larger;
+    letter-spacing: var(--font-wide-spacing);
+    padding-block: var(--len-2);
+    padding-inline: var(--len-4);
+    border-radius: var(--rad-2);
+    outline: var(--len-1) solid var(--col-paper);
+    margin-bottom: var(--len-5);
+
+}
+.basecontainer-content {
+    background-color: var(--col-magenta-400);
+}
 
 
 
