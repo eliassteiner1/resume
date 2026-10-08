@@ -46,6 +46,9 @@
     --rad-1: 8px;  /*  */
     --rad-2: 16px; /* main box radius */
 
+    /*  */
+    --h-banner-top: 120px;
+    --h-banner-bot: 100px;
 
 
     /* random vraiables timeline */
@@ -58,6 +61,10 @@
     --skillbar-w-pill: 30px;
     --skillbar-h-pill-big: 10px;
     --skillbar-h-pill-small: 6px;
+
+    /* random vars langs */
+    --langs-w-icon: 21px;
+    --langs-h-dashline: 2px;
 }
 
 
@@ -99,60 +106,149 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100vw; /* TEMP remove: just to make navigation easier with fixed a4 size */
+    overflow: scroll; /* TEMP remove: just to make navigation easier with fixed a4 size */
 }
 .A4 {
+    /* TODO rework grid. just two cols might be a bit awkward, no actually, two cols and each gets a flexbox */
     background-color: var(--col-paper);
     width: 1000px;
     aspect-ratio: 1/sqrt(2); /* to get DIN A format */
     margin: var(--len-5);
     display: grid;
     grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
-    grid-template-rows: minmax(0, 1fr);
+    grid-template-rows: var(--h-banner-top) minmax(0, 1fr) var(--h-banner-bot);
     grid-template-areas: 
-        "left right";
-    column-gap: var(--len-4);
+        "bannertop bannertop"
+        "left right"
+        "bannerbot bannerbot";
     padding: var(--len-4);
+    align-items: start; /* optional so that items don't get stretched updown */
+    column-gap: var(--len-4); /* TEMP */
+    row-gap: var(--len-5); /* TEMP */
 }
 
 
-.sectionheader {
+/* Basecontainer ==================================================================================================== */
+.basecontainer {
+    background-color: var(--col-base-100);
+    border-radius: var(--rad-2);
+    display: flex;
+    flex-direction: column;
+}
+.basecontainer-header {
     /* basic stylilng for all the section headers (excluding individual placement) */
     background-color: var(--col-blue-400);
     color: var(--col-paper);
     font-weight: bolder;
     font-size: larger;
     letter-spacing: var(--font-wide-spacing);
-    padding-block: var(--len-2);
+    padding-block: var(--len-1);
     padding-inline: var(--len-4);
+    border-radius: var(--rad-1);
+    outline: var(--len-1) solid var(--col-paper);
+    margin-bottom: var(--len-4);
+
+}
+.basecontainer:has(.timeline) {
+    /* in combination with timelines, the background should be empty */
+    background-color: revert;
+}
+.basecontainer:has(.timeline) .basecontainer-header {
+    /* also in combination with timelines, the margin after header needs to compensate for location */
+    margin-bottom: var(--len-5);
+}
+.basecontainer:has(.introduction) .basecontainer-header {
+    /* maybe remove the header on introduction so that the design isn't so crazy uniform */
+    display: none;
+}
+
+
+/* placement ---------------------------------------------------------------- */
+.basecontainer:has(.timeline.workexperience) {
+    margin-top: 350px;/* TEMP */
+    grid-area: right;
+}
+.basecontainer:has(.timeline.education) {
+    grid-area: right /* todo this has to be diff for second page */
+}
+.basecontainer:has(.skillbar) {
+    grid-area: left;
+    margin-top: 300px; /* TEMP */
+}
+.basecontainer:has(.langs) {
+    grid-area: left; /* todo this has to change for second page */ 
+}
+.basecontainer:has(.introduction) {
+    grid-area: right;
+}
+
+
+/* banners ========================================================================================================== */
+.banner {
+    background-color: var(--col-base-100);
+    height: 100%;
     border-radius: var(--rad-2);
+}
+.banner-top {
+    grid-area: bannertop;
+    position: relative;
+}
+.banner-bot {
+    grid-area: bannerbot;
+}
+
+
+.banner-name {
+    grid-area: left;
+    justify-self: center;
+    /* background-color: var(--col-blue-400); */
+    border-radius: var(--rad-2);
+    margin-top: -130px;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bolder;
+    letter-spacing: var(--font-wide-spacing);
+    width: 85%;
+    z-index: 999;
+}
+.portrait {
+    grid-area: left;
+    justify-self: center;
+    margin-top: -60px;
+    z-index: 998;
+
+    width: 70%;
+    aspect-ratio: 1.0;
+    object-fit: cover;
+    border-radius: var(--rad-2);
+    outline: var(--len-1) solid var(--col-paper);
+}
+.banner-info {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    background-color: var(--col-red-400);
+    width: 60%;
+    justify-self: end;
+}
+
+
+/* Intorduction ===================================================================================================== */
+.introduction {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: var(--len-4);
 }
 
 
 /* Timeline (Work Experience & Education) =========================================================================== */
 .timeline {
+    /* TODO maybe padding? */
     display: flex;
     flex-direction: column;
-    color: var(--col-black);
     width: 100%;
 }
-.timeline.workexperience {
-    grid-area: right;
-}
-.timeline.education {
-    grid-area: right;
-}
-
-
-.timeline-header {
-    margin-bottom: var(--len-5);
-}
-.timeline-header + .timeline-item .timeline-line {
-    /* selects for the timeline-item that immediately follow the header - so the first element */
-    top: calc(-1.0 * var(--len-5) + var(--len-1)); /* begin at the header */
-    height: calc(101% + var(--len-5) - var(--len-1)); /* extends line */
-}
-
-
 .timeline-item {
     /* main row-entry for the timeline (has a grid with date - track - contentbox */
     display: grid;
@@ -185,6 +281,11 @@ body {
     height: 101%; /* add sliiightly more height to not get visual separations */
     background-color: var(--col-base-500);
 } 
+.timeline-item:first-child .timeline-line {
+    /* selects for the timeline-item that immediately follow the header - so the first element; to extend the track liine until it reaches under the header */
+    top: calc(-1.0 * var(--len-5) + var(--len-1)); /* begin at the header */
+    height: calc(101% + var(--len-5) - var(--len-1)); /* extends line */
+}
 .timeline-dot {
     position: absolute;
     left: 50%;
@@ -291,17 +392,6 @@ body {
     display: flex;
     flex-direction: column;
     padding: var(--len-4);
-    background-color: var(--col-base-100);
-    border-radius: var(--rad-2);
-    align-self: start;
-}
-
-
-.skillbar-header {
-    outline: var(--len-1) solid var(--col-paper);
-    margin-top: calc(-1 * var(--len-4));
-    margin-inline: calc(-1 * var(--len-4));
-    margin-bottom: var(--len-4);
 }
 
 
@@ -326,7 +416,6 @@ body {
     /* indent all subitems */
     padding-left: var(--len-2);
 }
-
 .skillbar-item:not(:has(+ .skillbar-item.subitem)):not(:last-child) {
     /* B + A combinator gives easy access to A directly after B sibling. buut there is no inverse - e.g. A before B sibling. this way, give each skillbar-item that IS NOT followed by a subitem a margin. also exclude the last element of the skills list! */
     margin-bottom: var(--len-4);
@@ -367,37 +456,57 @@ body {
 }
 
 
-
-
-
-
-
-
-/* TODO: make one base "main element" / main container class that every element besides the timelines uses. this will just format the header + a grey box -> should work for all of them */
-
-.basecontainer {
-    background-color: var(--col-base-100);
-    border-radius: var(--rad-2);
+/* Languages ======================================================================================================== */
+.langs {
     display: flex;
     flex-direction: column;
+    padding: var(--len-4);
 }
-.basecontainer-header {
-    /* basic stylilng for all the section headers (excluding individual placement) */
-    background-color: var(--col-blue-400);
-    color: var(--col-paper);
-    font-weight: bolder;
-    font-size: larger;
-    letter-spacing: var(--font-wide-spacing);
-    padding-block: var(--len-2);
-    padding-inline: var(--len-4);
-    border-radius: var(--rad-2);
-    outline: var(--len-1) solid var(--col-paper);
-    margin-bottom: var(--len-5);
+.langs-item {
+    display: grid;
+    grid-template-columns: var(--langs-w-icon) auto minmax(0, 1fr) auto;
+    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-areas: 
+        "icon name line level"
+        "x desc desc desc";
+    margin-bottom: var(--len-4);
+    align-items: center;
+}
+.langs-icon {
+    grid-area: icon;
+    width: 100%;
+    aspect-ratio: 1.0;
+    object-fit: cover;
+}
+.langs-name {
+    grid-area: name;
+    font-variant-caps: small-caps;
+    font-weight: bold;
+    margin-left: var(--len-2);
+}
+.langs-line {
+    grid-area: line;
+    align-self: end;
+    height: 0px;
+    border-top: var(--langs-h-dashline) dashed var(--col-blue-400);
+    margin-inline: var(--len-3);
+    margin-bottom: 0.4lh; /* centering doesn't reeeally look centered with smallcaps -> shift a bit */
+}
+.langs-level {
+    grid-area: level;
+    font-variant-caps: small-caps;
+    font-weight: bold;
+}
+.langs-desc {
+    grid-area: desc;
+    text-align: justify;
+    margin-left: var(--len-2);
+    margin-top: var(--len-1);
+}
+.langs-desc:empty {
+    display: none;
+}
 
-}
-.basecontainer-content {
-    background-color: var(--col-magenta-400);
-}
 
 
 

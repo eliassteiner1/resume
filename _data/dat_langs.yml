@@ -1,0 +1,25 @@
+
+- name: "GermaN"
+  icon: "icon_switzerland.png"
+  level: "Native Speaker"
+  desc: ""
+
+- name: "English"
+  icon: "icon_britain.png"
+  level: "C1-C2"
+  desc: "Excellent knowledge (CAE in 2015)"
+
+- name: "Spanish"
+  icon: "icon_spain.png"
+  level: "B2-C1"
+  desc: "Good knowledge from self-study and courses taken at University of Zürich"
+
+- name: "French"
+  icon: "icon_france.png"
+  level: "B1"
+  desc: "Basic knowledge from French classes"
+
+- name: "Japanese"
+  icon: "icon_japan.png"
+  level: "A1"
+  desc: "Cultural interest, self study and courses taken at University of Zürich"

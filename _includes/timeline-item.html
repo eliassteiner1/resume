@@ -1,5 +1,7 @@
 <!-- this is the main entry block for a timeline. represents one row with 3 columns, needs a lot of cosmetic divs for the lines and dots. the location can be omitted if it's a subitem. to differentiate between subitems and not, the .subitem class is added and selected for in css -->
 
+<!-- makes sense to atomize this, as it can be used as either an item or subitem  -->
+
 <div class="timeline-item{% if include.sub %} subitem{% endif %}">
     <div class="timeline-date">{{ include.item.date }}</div>
     <div class="timeline-track">

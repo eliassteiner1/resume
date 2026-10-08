@@ -1,18 +1,27 @@
 <!-- escape filter make symbols like "&" work properly in html -->
 <!-- files in _data are automatically aggregated and served as loopable "colections" -->
 
-<div class="timeline {{ include.extraclass }}">
-    <div class="timeline-header sectionheader">{{ include.title }}</div>
-
-    <!-- loop over main entries -->
-    {% for item in include.items %}
-        {% include timeline-item.html item=item %}
-
-        <!-- loop over subentries (just nothing if there are no entries) -->
-        {% for subitem in item.subitems %}
-            {% include timeline-item.html item=subitem sub=true %}
-
+{% capture content %}
+    <!-- include an extra class to differentiate timelines (element is used multiple times) -->
+    <div class="timeline {{ include.extraclass }}">
+    
+        <!-- loop over main entries -->
+        {% for item in include.items %}
+            {% include timeline-item.html item=item %}
+    
+            <!-- loop over subentries (just nothing if there are no entries) -->
+            {% for subitem in item.subitems %}
+                {% include timeline-item.html item=subitem sub=true %}
+    
+            {% endfor %}
         {% endfor %}
-    {% endfor %}
+    
+    </div>  
+{% endcapture %}
 
-</div>
+<!-- fills all content into the reusable container with header -->
+{%
+    include basecontainer.html
+    title=include.title
+    content=content
+%}

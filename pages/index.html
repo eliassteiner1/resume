@@ -7,20 +7,37 @@ permalink: /
 <!-- timeline blocks are reused. to differentiate in css, needs one extra class as an identifier -->
 
 <div class="A4">
+    <div class="banner banner-top">     
+        <div class="banner-info">
+            <div class="banner-mail">elias.steiner@gmx.ch</div>
+            <div class="banner-address">Langfurrenstrasse 25, 8623 Wetzikon (CH)</div>
+            <div class="banner-tel">+41 76 680 90 20</div>
+            <div class="banner-link">eliassteiner1.github.io/portfolio</div>
+        </div>
+    </div>
 
-
+    <p class="banner-name">Elias Steiner</p>
+    <img class="portrait" src="{{ '/assets/images/portrait.jpg' | relative_url }}">
+    
     {% 
         include skillbar.html
         title="Additional Skills"
-        items=site.data.skills
+        items=site.data.dat_skills
+    %}
+
+    {%
+        include introduction.html
+        title="Short Introduction"
     %}
 
     {% 
         include timeline.html 
         title="Work Experience" 
-        items=site.data.workexperience
+        items=site.data.dat_workexperience
         extraclass="workexperience"
     %}
+
+    <div class="banner banner-bot">asdf</div>
 
 </div>
 
@@ -29,12 +46,14 @@ permalink: /
     {%
         include langs.html
         title="my Languages"
+        items=site.data.dat_langs
     %}
+
 
     {% 
         include timeline.html 
         title="Education" 
-        items=site.data.education 
+        items=site.data.dat_education 
         extraclass="education"
     %}
 

@@ -1,7 +1,18 @@
 {% capture content %}
-    <p>this is piped through from caputerè</p>
 
+    <div class="langs">
+        {% for item in include.items %}
+        <div class="langs-item">
+            <img class="langs-icon" src="{{ '/assets/images/' | append: item.icon | relative_url }}">
+            <div class="langs-name">{{ item.name }}</div>
+            <div class="langs-line"></div>
+            <div class="langs-level">{{ item.level }}</div>
+            <div class="langs-desc">{{ item.desc}}</div>
+        </div>
+        {% endfor %}
+    </div>
     
+
 {% endcapture %}
 
 <!-- fills all content into the reusable container with header -->
