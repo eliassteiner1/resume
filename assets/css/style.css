@@ -23,7 +23,7 @@
     --col-base-150: #DAD8CE;
     --col-base-100: #E6E4D9;
     --col-base-050: #F2F0E5;
-    --col-paper:    #FFFCF0;
+    --col-paper:    white; /* #FFFCF0 */
 
     /* flexoki accent colors (400 variants) */
     --col-red-400:     #D14D41;
@@ -31,7 +31,7 @@
     --col-yellow-400:  #D0A215;
     --col-green-400:   #879A39;
     --col-cyan-400:    #3AA99F;
-    --col-blue-400:    #4385BE;
+    --col-blue-400:    #205EA6;
     --col-purple-400:  #8B7EC8;
     --col-magenta-400: #CE5D97;
 
@@ -43,12 +43,15 @@
     --len-5: 36px; /* huge padding */
 
     /* border radiuses */
-    --rad-1: 8px;  /*  */
-    --rad-2: 16px; /* main box radius */
+    --rad-1: 12px;  /*  */
+    --rad-2: 18px; /* main box radius */
 
     /*  */
     --h-banner-top: 120px;
-    --h-banner-bot: 100px;
+    --h-banner-bot: 60px;
+
+    --h-name: 50px;
+    --h-inset-portrait: 40px;
 
 
     /* random vraiables timeline */
@@ -80,19 +83,21 @@
     margin: 0; /* remove all default margins to start from a clean slate */
     padding: 0; /* remove all default paddings to start from a clean slate */
 }
-
 svg, img { 
   display: block; /* display images and svgs as block and not as text (which can add weird spacing) */
 }
-
 body {
   min-height: 100vh; /* makes sure that content occupies the entire screen (more predictable for designing & footer) */
 }
-
 html {
   scrollbar-gutter: stable; /* always keeps the space for scrollbar reserved */
 }
 
+
+ul,
+ol {
+    padding-left: 1.8em; /* room for the bullets, reset before */
+}
 
 
 /* ================================================================================================================== */
@@ -117,24 +122,44 @@ body {
     margin: var(--len-5);
     display: grid;
     grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
+    padding: var(--len-4);
+    column-gap: var(--len-4); /* TEMP */
+}
+.A4.page1 {
+    grid-template-rows: var(--h-banner-top) minmax(0, 1fr);
+    grid-template-areas: 
+        "bannertop bannertop"
+        "left right";
+    padding-bottom: var(--len-5) 
+}
+.A4.page2 {
     grid-template-rows: var(--h-banner-top) minmax(0, 1fr) var(--h-banner-bot);
     grid-template-areas: 
         "bannertop bannertop"
         "left right"
-        "bannerbot bannerbot";
-    padding: var(--len-4);
-    align-items: start; /* optional so that items don't get stretched updown */
-    column-gap: var(--len-4); /* TEMP */
-    row-gap: var(--len-5); /* TEMP */
+        "bannerbot bannerbot";   
+}
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    position: relative; /* position anchor for portrait and name */
+}
+.column-left {
+    grid-area: left;
+}
+.column-right {
+    grid-area: right;
 }
 
 
 /* Basecontainer ==================================================================================================== */
 .basecontainer {
-    background-color: var(--col-base-100);
-    border-radius: var(--rad-2);
+    background-color: var(--col-base-050);
+    border-radius: 0 var(--rad-2) 0 var(--rad-2);
     display: flex;
     flex-direction: column;
+    margin-top: var(--len-5);
 }
 .basecontainer-header {
     /* basic stylilng for all the section headers (excluding individual placement) */
@@ -143,9 +168,10 @@ body {
     font-weight: bolder;
     font-size: larger;
     letter-spacing: var(--font-wide-spacing);
-    padding-block: var(--len-1);
+    padding-top: var(--len-1);
+    padding-bottom: calc(1.6 * var(--len-1));
     padding-inline: var(--len-4);
-    border-radius: var(--rad-1);
+    border-radius: 0 var(--rad-1) 0 var(--rad-1);
     outline: var(--len-1) solid var(--col-paper);
     margin-bottom: var(--len-4);
 
@@ -158,78 +184,71 @@ body {
     /* also in combination with timelines, the margin after header needs to compensate for location */
     margin-bottom: var(--len-5);
 }
-.basecontainer:has(.introduction) .basecontainer-header {
+.basecontainer:has(.introduction) .basecontainer-header,
+.basecontainer:has(.info) .basecontainer-header {
     /* maybe remove the header on introduction so that the design isn't so crazy uniform */
     display: none;
 }
-
-
-/* placement ---------------------------------------------------------------- */
-.basecontainer:has(.timeline.workexperience) {
-    margin-top: 350px;/* TEMP */
-    grid-area: right;
-}
-.basecontainer:has(.timeline.education) {
-    grid-area: right /* todo this has to be diff for second page */
-}
-.basecontainer:has(.skillbar) {
-    grid-area: left;
-    margin-top: 300px; /* TEMP */
-}
-.basecontainer:has(.langs) {
-    grid-area: left; /* todo this has to change for second page */ 
-}
 .basecontainer:has(.introduction) {
-    grid-area: right;
+    background-color: var(--col-paper);
+    /* margin-top: calc(-1 * var(--h-inset-portrait)); */
 }
 
 
-/* banners ========================================================================================================== */
+.basecontainer:has(.skillbar),
+.basecontainer:has(.workexperience) {
+    /* TODO tune this at the end - can also nicely stretch elements out like timeline! */
+    flex-grow: 1;
+}
+
+
+/* banners & top elements =========================================================================================== */
 .banner {
-    background-color: var(--col-base-100);
-    height: 100%;
-    border-radius: var(--rad-2);
+    background-color: var(--col-base-050);
+    height: auto; /* this will accomodate for margin unlike 100% */
+    border-radius: 0 var(--rad-2) 0 var(--rad-2);
 }
 .banner-top {
     grid-area: bannertop;
-    position: relative;
+    margin-top: calc(0.5 * var(--h-name));
 }
 .banner-bot {
     grid-area: bannerbot;
 }
+.page1 .banner-bot {
+    display: none;
+}
 
 
-.banner-name {
-    grid-area: left;
-    justify-self: center;
-    /* background-color: var(--col-blue-400); */
-    border-radius: var(--rad-2);
-    margin-top: -130px;
-    text-align: center;
+.name {
+    position: absolute;
+    top: calc(-1 * var(--h-banner-top));
+    height: var(--h-name);
+    align-self: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--col-blue-400);
+    color: var(--col-paper);
+    border-radius: 0 var(--rad-2) 0 var(--rad-2);
+    outline: var(--len-1) solid var(--col-paper);
     font-size: xx-large;
     font-weight: bolder;
     letter-spacing: var(--font-wide-spacing);
-    width: 85%;
+    width: 100%;
     z-index: 999;
 }
 .portrait {
-    grid-area: left;
-    justify-self: center;
-    margin-top: -60px;
+    margin-top: calc(-1 * var(--h-inset-portrait));
+    align-self: center;
     z-index: 998;
-
-    width: 70%;
-    aspect-ratio: 1.0;
+    width: 75%;
+    aspect-ratio: 0.95;
     object-fit: cover;
     border-radius: var(--rad-2);
     outline: var(--len-1) solid var(--col-paper);
-}
-.banner-info {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-    background-color: var(--col-red-400);
-    width: 60%;
-    justify-self: end;
 }
 
 
@@ -238,7 +257,44 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
+    font-weight: lighter;
+    text-align: justify;
+    padding-right: var(--len-5);
+}
+
+
+/* Info ============================================================================================================= */
+.info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     padding: var(--len-4);
+    gap: var(--len-3);
+    font-weight: normal;
+    font-variant-caps: small-caps;
+}
+.info-item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: var(--len-3);
+}
+.info-icon {
+    background-color: var(--col-blue-400);
+    aspect-ratio: 1;
+    width: 30px;
+    border-radius: 50%;
+    display: grid; /* make it a grid to place pseudoelement ::after */
+    place-items: center;
+}
+.info-icon::before {
+    /* use pseudo-item to avoid introduce another extra div for drawing the actual icon */
+    content: "";
+    width: 60%;
+    aspect-ratio: 1;
+    background-color: var(--col-paper);
+    mask: var(--iconurl) center / contain no-repeat;
+
 }
 
 
@@ -312,14 +368,14 @@ body {
 .timeline-contentbox {
     padding: var(--len-3);
     padding-top: calc(var(--len-3) + 0.5lh); /* add some more space for the overlapping loc -> half a line h */
-    border-radius: var(--rad-2);
+    border-radius: 0 var(--rad-2) 0 var(--rad-2);
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto 1fr;
     grid-template-areas: 
       "title"
       "desc";
-    background-color: var(--col-base-100);
+    background-color: var(--col-base-050);
     position: relative;
 }
 .timeline-item.subitem .timeline-contentbox {
@@ -330,7 +386,7 @@ body {
 }
 .timeline-item:not(.subitem):has(+ .subitem) .timeline-contentbox {
     /* selects every main item (not subitem) that is immediately followed by a subitem -> doesn't need the bottom borders since block will continue */
-    border-radius: var(--rad-2) var(--rad-2) 0px 0px;
+    border-radius: 0 var(--rad-2) 0 0;
 }
 .timeline-item:not(:has(+ .subitem)):not(:last-child) .timeline-contentbox {
     /* only margins EVERY item that is NOT followed by a subitem and that is not last in the timeline */
@@ -338,7 +394,7 @@ body {
 }
 .timeline-item.subitem:not(:has(+ .subitem)) .timeline-contentbox {
     /* only last subitem of a block needs a bottom radius */
-    border-radius: 0px 0px var(--rad-2) var(--rad-2);
+    border-radius: 0 0 0 var(--rad-2);
 }
 .timeline-title {
     grid-area: title;
@@ -360,7 +416,7 @@ body {
     border-radius: var(--rad-1) var(--rad-1) 0 var(--rad-1);
     padding-inline: var(--len-3);
     padding-block: var(--len-1);
-    background-color: var(--col-base-100);
+    background-color: var(--col-base-050);
     outline: var(--len-1) solid var(--col-paper);
     display: flex;
     flex-direction: row;
@@ -413,8 +469,7 @@ body {
     font-weight: normal;
 }
 .skillbar-item.subitem {
-    /* indent all subitems */
-    padding-left: var(--len-2);
+    padding-left: var(--len-2); /* indent all subitems */
 }
 .skillbar-item:not(:has(+ .skillbar-item.subitem)):not(:last-child) {
     /* B + A combinator gives easy access to A directly after B sibling. buut there is no inverse - e.g. A before B sibling. this way, give each skillbar-item that IS NOT followed by a subitem a margin. also exclude the last element of the skills list! */

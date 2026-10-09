@@ -1,0 +1,16 @@
+{% capture content %}
+    <div class="info">
+        {% for item in include.items %}
+            <div class="info-item">
+                <div class="info-icon" style="--iconurl: url('{{ '/assets/images/' | append: item.icon | relative_url}}')"></div>
+                <div class="info-data">{{ item.data }}</div>
+            </div>
+        {% endfor %}
+    </div>
+{% endcapture %}
+
+{%
+    include basecontainer.html
+    title=include.title
+    content=content
+%}
