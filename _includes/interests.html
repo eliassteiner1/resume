@@ -1,0 +1,15 @@
+{% capture content %}
+    <div class="interests">
+        <div class="interests-item">
+            <div class="interests-title">Sports</div>
+            <div class="interests-desc">Board member at local sports club (VBC Wetzikon) with responsibility for financial bookkeeping and budget management</div>
+        </div>
+    </div>
+{% endcapture %}
+
+
+{% 
+    include basecontainer.html
+    title=include.title
+    content=content
+%}

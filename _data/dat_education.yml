@@ -1,32 +1,32 @@
 # watch out: colon followed by space needs to be wrapped in quotes!
 # watch out: wrap dates in quotes, otherwise parsed as integers while something like 2025-2026 is parsed as string anyways
 
-- date: "2025-2026"
-  title: "Master Mechanical Engineering"
-  location: "Balgrist Campus"
-  desc: "Working on various projects related to medical robotics with a strong focus on computer vision and dataset procuration for publications"
-
-- date: "2023-2025"
-  title: "ölkjölkjölkjölkjölkjök"
-  location: "Sensirion Stäfa"
-  desc: "Data analysis with Python for a methane gas emission detection system for crude oil production sites"
-
-- date: "2023-2024"
-  title: "Bachelor Mechanical Engineering"
-  location: "ABACUS Nachhilfe"
-  desc: ""
+- date: "-2025<br>2022"
+  title: "Master Degree in Mechanical Engineering"
+  location: "ETH Zürich"
+  desc: "Focus on Robotic, Machinelearning and Computer Vision"
   subitems:
+    - date: "-2025<br>2024"
+      title: "Master Thesis"
+      desc: "<i>Exploring Aerial Manipulation with an Omnidirectional Hexacopter.</i> Vision based object tracking, implementation of controls with Riemannian Motion Policies and hardware design for aerial manipulation tasks with a six-degree-of-freedom hexacopter."
+    - date: "2024"
+      title: "Semester Thesis"
+      desc: "Task Oriented Robotic Grasping for Robot-Human Handovers. Use of geometric deep learning for non-rigid 3D shape matching and texture transfer for segmentation of point clouds"
     - date: "2022"
-      title: "Role: just worked as a Junior"
-      desc: "Individual tutoring for high school students (Physics & Mathematics)"
-    - date: "2023"
-      title: "Role: here I worked as Intern"
-      desc: "Individual tutoring for high school students (Physics & Mathematics)"
-    - date: "2023"
-      title: "Role: here I worked as Intern"
-      desc: "Individual tutoring for high school students (Physics & Mathematics)"
+      title: "Exchange Semester at UPC Barcelona"
+      desc: ""
 
-- date: "2023-2025"
-  title: "KZO Wetzikon"
-  location: "KZO"
-  desc: "Data analysis with Python for a methane gas emission detection system for crude oil production sites"
+- date: "2018-2022"
+  title: "Bachelor Degree in Mechanical Engineering"
+  location: "ETH Zürich"
+  desc: "Focus on Microsystems and Nanoscale Engineering"
+  subitems:
+    - date: "2021-2022"
+      title: "Bachelor Thesis"
+      desc: "Autonomous Steering of a Magnetic Catheter for Spinal Cord Stimulation. Design and fabrication of a magnetic catheter, steered via an autonomous control algorithm and tested in custom-developed epidural space models of the human spine"
+
+- date: "2017"
+  title: "Matura (Swiss High School Diploma)"
+  location: "KZO Wetzikon"
+  desc: "Focus on Biology and Chemistry"
+

@@ -22,7 +22,7 @@
     --col-base-200: #CECDC3;
     --col-base-150: #DAD8CE;
     --col-base-100: #E6E4D9;
-    --col-base-050: #F2F0E5;
+    --col-base-050: rgb(238, 238, 238); /* #F2F0E5 */
     --col-paper:    white; /* #FFFCF0 */
 
     /* flexoki accent colors (400 variants) */
@@ -31,7 +31,7 @@
     --col-yellow-400:  #D0A215;
     --col-green-400:   #879A39;
     --col-cyan-400:    #3AA99F;
-    --col-blue-400:    #205EA6;
+    --col-blue-400:    #205EA6; /* changed to the base 600! */
     --col-purple-400:  #8B7EC8;
     --col-magenta-400: #CE5D97;
 
@@ -43,22 +43,24 @@
     --len-5: 36px; /* huge padding */
 
     /* border radiuses */
-    --rad-1: 12px;  /*  */
-    --rad-2: 18px; /* main box radius */
+    --rad-1: 12px;  /* 12px */
+    --rad-2: 18px; /* 18px main box radius */
 
     /*  */
-    --h-banner-top: 120px;
-    --h-banner-bot: 60px;
+    --h-banner-p1: 100px;
+    --h-banner-p2: 80px;
 
     --h-name: 50px;
-    --h-inset-portrait: 40px;
+    --h-inset-portrait: 30px;
 
 
     /* random vraiables timeline */
-    --timeline-w-date: 92px;
+    --timeline-w-date: 50px; /* 92 works for one-line date */
     --timeline-w-track: 40px;
     --timeline-w-circle-big: 24px;
     --timeline-w-circle-small: 12px;
+
+    --flex-grow-items: 1;
 
     /* random vars skillbar */
     --skillbar-w-pill: 30px;
@@ -121,29 +123,34 @@ body {
     aspect-ratio: 1/sqrt(2); /* to get DIN A format */
     margin: var(--len-5);
     display: grid;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
+    grid-template-columns: minmax(0, 5fr) minmax(0, 9fr);
     padding: var(--len-4);
+    padding-bottom: var(--len-5);
     column-gap: var(--len-4); /* TEMP */
 }
 .A4.page1 {
-    grid-template-rows: var(--h-banner-top) minmax(0, 1fr);
+    grid-template-rows: var(--h-banner-p1) auto minmax(0, 1fr);
     grid-template-areas: 
-        "bannertop bannertop"
+        "banner banner"
+        "leftup rightup"
         "left right";
-    padding-bottom: var(--len-5) 
+    position: relative; /* position anchor for portrait and name */
+ 
 }
 .A4.page2 {
-    grid-template-rows: var(--h-banner-top) minmax(0, 1fr) var(--h-banner-bot);
+    grid-template-rows: auto minmax(0, 1fr) var(--h-banner-p2);
     grid-template-areas: 
-        "bannertop bannertop"
         "left right"
-        "bannerbot bannerbot";   
+        "interests interests"
+        "banner banner";   
+    row-gap: var(--len-5);
+    padding-top: var(--len-5);
 }
 .column {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    position: relative; /* position anchor for portrait and name */
+    gap: var(--len-5);
 }
 .column-left {
     grid-area: left;
@@ -159,10 +166,9 @@ body {
     border-radius: 0 var(--rad-2) 0 var(--rad-2);
     display: flex;
     flex-direction: column;
-    margin-top: var(--len-5);
 }
 .basecontainer-header {
-    /* basic stylilng for all the section headers (excluding individual placement) */
+    /* basic styling for all the section headers (excluding individual placement) */
     background-color: var(--col-blue-400);
     color: var(--col-paper);
     font-weight: bolder;
@@ -173,8 +179,6 @@ body {
     padding-inline: var(--len-4);
     border-radius: 0 var(--rad-1) 0 var(--rad-1);
     outline: var(--len-1) solid var(--col-paper);
-    margin-bottom: var(--len-4);
-
 }
 .basecontainer:has(.timeline) {
     /* in combination with timelines, the background should be empty */
@@ -184,45 +188,41 @@ body {
     /* also in combination with timelines, the margin after header needs to compensate for location */
     margin-bottom: var(--len-5);
 }
-.basecontainer:has(.introduction) .basecontainer-header,
 .basecontainer:has(.info) .basecontainer-header {
-    /* maybe remove the header on introduction so that the design isn't so crazy uniform */
+    /* maybe remove the header so that the design isn't so crazy uniform */
     display: none;
 }
-.basecontainer:has(.introduction) {
-    background-color: var(--col-paper);
-    /* margin-top: calc(-1 * var(--h-inset-portrait)); */
-}
-
-
 .basecontainer:has(.skillbar),
-.basecontainer:has(.workexperience) {
+.basecontainer:has(.education),
+.basecontainer:has(.langs) {
     /* TODO tune this at the end - can also nicely stretch elements out like timeline! */
     flex-grow: 1;
+}
+.basecontainer:has(.interests) {
+    grid-area: interests;
 }
 
 
 /* banners & top elements =========================================================================================== */
 .banner {
+    grid-area: banner;
     background-color: var(--col-base-050);
     height: auto; /* this will accomodate for margin unlike 100% */
     border-radius: 0 var(--rad-2) 0 var(--rad-2);
 }
-.banner-top {
-    grid-area: bannertop;
-    margin-top: calc(0.5 * var(--h-name));
+.page1 .banner {
+    margin-top: calc(0.5 * var(--h-name)); /* make some space for the offset name */
 }
-.banner-bot {
-    grid-area: bannerbot;
-}
-.page1 .banner-bot {
-    display: none;
+.page2 .banner {
+    padding-inline: var(--len-5);
+
 }
 
 
 .name {
+    grid-area: leftup;
     position: absolute;
-    top: calc(-1 * var(--h-banner-top));
+    top: calc(-1 * var(--h-banner-p1));
     height: var(--h-name);
     align-self: center;
 
@@ -241,25 +241,55 @@ body {
     z-index: 999;
 }
 .portrait {
+    grid-area: leftup;
     margin-top: calc(-1 * var(--h-inset-portrait));
-    align-self: center;
+    margin-bottom: var(--len-5);
+    justify-self: center;
     z-index: 998;
-    width: 75%;
+    width: 70%;
     aspect-ratio: 0.95;
     object-fit: cover;
     border-radius: var(--rad-2);
     outline: var(--len-1) solid var(--col-paper);
 }
-
+.portfoliolink {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    font-variant-caps: small-caps;
+    font-size: larger;
+    font-weight: bold;
+    letter-spacing: calc(0.5 * var(--font-wide-spacing));
+    height: 100%;
+    gap: var(--len-4);
+    
+}
+.portfoliolink-icon {
+    width: 40px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--col-blue-400);
+    display: grid; /* necessary to display the empty ::before element */
+    place-items: center;
+}
+.portfoliolink-icon::before {
+    content: "";
+    width: 60%;
+    aspect-ratio: 1;
+    background-color: var(--col-paper);
+    mask: url("../images/icon_profile.png") center / contain no-repeat;
+}
 
 /* Intorduction ===================================================================================================== */
 .introduction {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: auto;
     font-weight: lighter;
     text-align: justify;
-    padding-right: var(--len-5);
+    padding-top: var(--len-4);
+    margin-inline: var(--len-3);
+    margin-bottom: var(--len-5);
 }
 
 
@@ -304,12 +334,14 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 100%;
 }
 .timeline-item {
     /* main row-entry for the timeline (has a grid with date - track - contentbox */
     display: grid;
     grid-template-columns: var(--timeline-w-date) var(--timeline-w-track) minmax(0, 1fr);
 }
+
   
 
 /* timeline-date ------------------------------------------------------------ */
@@ -362,12 +394,16 @@ body {
     top: calc(var(--len-3) + 0.5lh + var(--len-1)); /* compensate for the divider line */
   
 }
+.timeline-item:not(:has(+ .subitem)):not(:last-child) {
+    /* for flex growing the entire section, but only in the places where it makes sense */
+    flex-grow: var(--flex-grow-items);
+}
 
 
 /* timeline-contentbox ------------------------------------------------------ */
 .timeline-contentbox {
     padding: var(--len-3);
-    padding-top: calc(var(--len-3) + 0.5lh); /* add some more space for the overlapping loc -> half a line h */
+    padding-top: calc(var(--len-3) + 0.4lh); /* add some more space for the overlapping loc -> half a line h */
     border-radius: 0 var(--rad-2) 0 var(--rad-2);
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -375,8 +411,14 @@ body {
     grid-template-areas: 
       "title"
       "desc";
-    background-color: var(--col-base-050);
     position: relative;
+    text-align: justify;
+    align-self: start; /* to make sure that the contentbox itself doesn't flex grow */
+
+    /* background-color: var(--col-base-050); */
+    /* border: var(--len-1) solid var(--col-base-500); */
+
+
 }
 .timeline-item.subitem .timeline-contentbox {
     /* just base properties for any subitem contentbox. generally don't need borders */
@@ -563,6 +605,10 @@ body {
 }
 
 
+/* Interests ======================================================================================================== */
+.interests {
+    padding: var(--len-4);
+}
 
 
 /* show all boxes with a slight background and slight outline */

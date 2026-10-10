@@ -9,14 +9,14 @@
         <div class="timeline-dot"></div>
     </div>
     <div class="timeline-contentbox">
-        <div class="timeline-title">{{ include.item.title | escape }}</div>
+        <div class="timeline-title">{{ include.item.title }}</div>
         {% unless include.sub %}
         <div class="timeline-loc">
-            {{ include.item.location | escape }}
+            {{ include.item.location }}
             <div class="timeline-locicon"></div>
         </div>
         {% endunless %}
-        <div class="timeline-desc">{{ include.item.desc | escape }}</div>
+        <div class="timeline-desc">{{ include.item.desc }}</div>
     </div>
 </div>
 

@@ -7,13 +7,19 @@ permalink: /
 <!-- timeline blocks are reused. to differentiate in css, needs one extra class as an identifier -->
 
 <div class="A4 page1">
-    <div class="banner banner-top"></div>    
+    <div class="banner"></div>  
+
+    <div class="name">
+        <p>Elias Steiner</p>
+    </div>
+    <img class="portrait" src="{{ '/assets/images/portrait.jpg' | relative_url }}">
+    
+    {%
+        include introduction.html
+        title="Short Introduction"
+    %}
     
     <div class="column column-left">
-        <div class="name">
-            <p>Elias Steiner</p>
-        </div>
-        <img class="portrait" src="{{ '/assets/images/portrait.jpg' | relative_url }}">
         {% 
             include skillbar.html
             title="Additional Skills"
@@ -27,10 +33,6 @@ permalink: /
     </div>
 
     <div class="column column-right">
-        {%
-            include introduction.html
-            title="Short Introduction"
-        %}
         {% 
             include timeline.html 
             title="Work Experience" 
@@ -42,7 +44,12 @@ permalink: /
 </div>
 
 <div class="A4 page2">
-    <div class="banner banner-top"></div>
+    <div class="banner">
+        <div class="portfoliolink">
+            <div class="portfoliolink-icon"></div>
+            <p>Portfolio link: eliassteiner1.github.io/portfolio</p>
+        </div>
+    </div>
     
     <div class="column column-left">
         {%
@@ -61,6 +68,9 @@ permalink: /
         %}
     </div>
 
-    <div class="banner banner-bot">asdf</div>
+    {%
+        include interests.html
+        title="Personal Interests"
+    %}
 
 </div>
