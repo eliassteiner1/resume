@@ -9,38 +9,23 @@
     --font-base-size: large;
     --font-wide-spacing: 0.16em;
 
-    /* flexoki base greyscale */
-    --col-black:    #100F0F;
-    --col-base-950: #1C1B1A;
-    --col-base-900: #282726;
-    --col-base-850: #343331;
-    --col-base-800: #403E3C;
-    --col-base-700: #575653;
-    --col-base-600: #6F6E69;
-    --col-base-500: #878580;
-    --col-base-300: #B7B5AC;
-    --col-base-200: #CECDC3;
-    --col-base-150: #DAD8CE;
-    --col-base-100: #E6E4D9;
-    --col-base-050: rgb(238, 238, 238); /* #F2F0E5 */
-    --col-paper:    white; /* #FFFCF0 */
+    /* color definitions */
+    --col-black: #100F0F;
+    --col-white: #FFFFFF;
+    --col-greybg: #EEEEEE;
+    --col-grey: #8C8C8C;
 
-    /* flexoki accent colors (400 variants) */
-    --col-red-400:     #D14D41;
-    --col-orange-400:  #DA702C;
-    --col-yellow-400:  #D0A215;
-    --col-green-400:   #879A39;
-    --col-cyan-400:    #3AA99F;
-    --col-blue-400:    #205EA6; /* changed to the base 600! */
-    --col-purple-400:  #8B7EC8;
-    --col-magenta-400: #CE5D97;
+    --col-accent: #4475A0;
+    --col-accent-light: color-mix(in oklab, var(--col-accent) 60%, var(--col-white));
 
     /* length units to have a consistent design */
     --len-1: 4px;  /* divider lines & xtrasmall padding */
     --len-2: 8px;  /* small padding */
-    --len-3: 12px; /* medium padding */
-    --len-4: 20px; /* large padding */
-    --len-5: 36px; /* huge padding */
+    --len-3: 16px; /* medium padding */
+    --len-3med: 24px; /* large padding */
+    --len-4: 32px; /* huge padding */
+    --len-4med: 48px;
+    --len-5: 64px; 
 
     /* border radiuses */
     --rad-1: 12px;  /* 12px */
@@ -57,13 +42,14 @@
     /* random vraiables timeline */
     --timeline-w-date: 50px; /* 92 works for one-line date */
     --timeline-w-track: 40px;
+    --timeline-w-line: 3px;
     --timeline-w-circle-big: 24px;
     --timeline-w-circle-small: 12px;
 
     --flex-grow-items: 1;
 
     /* random vars skillbar */
-    --skillbar-w-pill: 30px;
+    --skillbar-w-pill: 35px;
     --skillbar-h-pill-big: 10px;
     --skillbar-h-pill-small: 6px;
 
@@ -102,6 +88,7 @@ ol {
 }
 
 
+
 /* ================================================================================================================== */
 /* GENERIC FORMATTING =============================================================================================== */
 /* ================================================================================================================== */
@@ -118,15 +105,15 @@ body {
 }
 .A4 {
     /* TODO rework grid. just two cols might be a bit awkward, no actually, two cols and each gets a flexbox */
-    background-color: var(--col-paper);
+    background-color: var(--col-white);
     width: 1000px;
     aspect-ratio: 1/sqrt(2); /* to get DIN A format */
-    margin: var(--len-5);
+    margin: var(--len-4);
     display: grid;
     grid-template-columns: minmax(0, 5fr) minmax(0, 9fr);
-    padding: var(--len-4);
-    padding-bottom: var(--len-5);
-    column-gap: var(--len-4); /* TEMP */
+    padding: var(--len-3med);
+    padding-bottom: var(--len-4);
+    column-gap: var(--len-3med); /* TEMP */
 }
 .A4.page1 {
     grid-template-rows: var(--h-banner-p1) auto minmax(0, 1fr);
@@ -143,14 +130,14 @@ body {
         "left right"
         "interests interests"
         "banner banner";   
-    row-gap: var(--len-5);
-    padding-top: var(--len-5);
+    row-gap: var(--len-4);
+    padding-top: var(--len-4);
 }
 .column {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    gap: var(--len-5);
+    gap: var(--len-4);
 }
 .column-left {
     grid-area: left;
@@ -162,23 +149,23 @@ body {
 
 /* Basecontainer ==================================================================================================== */
 .basecontainer {
-    background-color: var(--col-base-050);
+    background-color: var(--col-greybg);
     border-radius: 0 var(--rad-2) 0 var(--rad-2);
     display: flex;
     flex-direction: column;
 }
 .basecontainer-header {
     /* basic styling for all the section headers (excluding individual placement) */
-    background-color: var(--col-blue-400);
-    color: var(--col-paper);
+    background-color: var(--col-accent);
+    color: var(--col-white);
     font-weight: bolder;
     font-size: larger;
     letter-spacing: var(--font-wide-spacing);
     padding-top: var(--len-1);
     padding-bottom: calc(1.6 * var(--len-1));
-    padding-inline: var(--len-4);
+    padding-inline: var(--len-3med);
     border-radius: 0 var(--rad-1) 0 var(--rad-1);
-    outline: var(--len-1) solid var(--col-paper);
+    outline: var(--len-1) solid var(--col-white);
 }
 .basecontainer:has(.timeline) {
     /* in combination with timelines, the background should be empty */
@@ -186,7 +173,7 @@ body {
 }
 .basecontainer:has(.timeline) .basecontainer-header {
     /* also in combination with timelines, the margin after header needs to compensate for location */
-    margin-bottom: var(--len-5);
+    margin-bottom: var(--len-4);
 }
 .basecontainer:has(.info) .basecontainer-header {
     /* maybe remove the header so that the design isn't so crazy uniform */
@@ -206,7 +193,7 @@ body {
 /* banners & top elements =========================================================================================== */
 .banner {
     grid-area: banner;
-    background-color: var(--col-base-050);
+    background-color: var(--col-greybg);
     height: auto; /* this will accomodate for margin unlike 100% */
     border-radius: 0 var(--rad-2) 0 var(--rad-2);
 }
@@ -214,7 +201,7 @@ body {
     margin-top: calc(0.5 * var(--h-name)); /* make some space for the offset name */
 }
 .page2 .banner {
-    padding-inline: var(--len-5);
+    padding-inline: var(--len-4);
 
 }
 
@@ -230,10 +217,10 @@ body {
     align-items: center;
     justify-content: center;
 
-    background-color: var(--col-blue-400);
-    color: var(--col-paper);
+    background-color: var(--col-accent);
+    color: var(--col-white);
     border-radius: 0 var(--rad-2) 0 var(--rad-2);
-    outline: var(--len-1) solid var(--col-paper);
+    outline: var(--len-1) solid var(--col-white);
     font-size: xx-large;
     font-weight: bolder;
     letter-spacing: var(--font-wide-spacing);
@@ -243,14 +230,13 @@ body {
 .portrait {
     grid-area: leftup;
     margin-top: calc(-1 * var(--h-inset-portrait));
-    margin-bottom: var(--len-5);
+    margin-bottom: var(--len-4);
     justify-self: center;
     z-index: 998;
     width: 70%;
     aspect-ratio: 0.95;
     object-fit: cover;
-    border-radius: var(--rad-2);
-    outline: var(--len-1) solid var(--col-paper);
+    outline: var(--len-1) solid var(--col-white);
 }
 .portfoliolink {
     display: grid;
@@ -261,14 +247,14 @@ body {
     font-weight: bold;
     letter-spacing: calc(0.5 * var(--font-wide-spacing));
     height: 100%;
-    gap: var(--len-4);
+    gap: var(--len-3med);
     
 }
 .portfoliolink-icon {
     width: 40px;
     aspect-ratio: 1;
     border-radius: 50%;
-    background-color: var(--col-blue-400);
+    background-color: var(--col-accent);
     display: grid; /* necessary to display the empty ::before element */
     place-items: center;
 }
@@ -276,7 +262,7 @@ body {
     content: "";
     width: 60%;
     aspect-ratio: 1;
-    background-color: var(--col-paper);
+    background-color: var(--col-white);
     mask: url("../images/icon_profile.png") center / contain no-repeat;
 }
 
@@ -287,9 +273,9 @@ body {
     width: auto;
     font-weight: lighter;
     text-align: justify;
-    padding-top: var(--len-4);
+    padding-top: var(--len-3);
     margin-inline: var(--len-3);
-    margin-bottom: var(--len-5);
+    margin-bottom: var(--len-4);
 }
 
 
@@ -298,7 +284,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: var(--len-4);
+    padding: var(--len-3);
     gap: var(--len-3);
     font-weight: normal;
     font-variant-caps: small-caps;
@@ -310,7 +296,7 @@ body {
     gap: var(--len-3);
 }
 .info-icon {
-    background-color: var(--col-blue-400);
+    background-color: var(--col-accent);
     aspect-ratio: 1;
     width: 30px;
     border-radius: 50%;
@@ -320,9 +306,9 @@ body {
 .info-icon::before {
     /* use pseudo-item to avoid introduce another extra div for drawing the actual icon */
     content: "";
-    width: 60%;
+    width: 50%;
     aspect-ratio: 1;
-    background-color: var(--col-paper);
+    background-color: var(--col-white);
     mask: var(--iconurl) center / contain no-repeat;
 
 }
@@ -330,16 +316,20 @@ body {
 
 /* Timeline (Work Experience & Education) =========================================================================== */
 .timeline {
-    /* TODO maybe padding? */
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
+    padding-right: var(--len-3);
 }
 .timeline-item {
     /* main row-entry for the timeline (has a grid with date - track - contentbox */
     display: grid;
     grid-template-columns: var(--timeline-w-date) var(--timeline-w-track) minmax(0, 1fr);
+}
+.timeline-item:not(:has(+ .subitem)):not(:last-child) {
+    /* for flex growing the entire section, but only in the places where it makes sense */
+    flex-grow: var(--flex-grow-items);
 }
 
   
@@ -348,10 +338,10 @@ body {
 .timeline-date {
     font-weight: bold;
     text-align: right;
-    padding-top: calc(var(--len-3) + 0.5lh); /* mimic the padding of contentbox */
+    padding-top: 0; /* mimic the padding of contentbox */
 }
 .timeline-item.subitem .timeline-date {
-    padding-top: calc(var(--len-3) + var(--len-1)); /* compensate for divider line on subitem */
+    padding-top: 0; /* compensate for divider line on subitem */
     font-weight: normal;
 }
 
@@ -365,119 +355,98 @@ body {
     left: 50%; /* centering the line horizontally */
     top: 0; /* technically implied, but more robust to write it */
     translate: -50% 0; /* for really centering the line and taking into account it's own width*/
-    width: var(--len-1);
+    width: var(--timeline-w-line);
     height: 101%; /* add sliiightly more height to not get visual separations */
-    background-color: var(--col-base-500);
+    background-color: var(--col-grey);
 } 
 .timeline-item:first-child .timeline-line {
     /* selects for the timeline-item that immediately follow the header - so the first element; to extend the track liine until it reaches under the header */
-    top: calc(-1.0 * var(--len-5) + var(--len-1)); /* begin at the header */
-    height: calc(101% + var(--len-5) - var(--len-1)); /* extends line */
+    top: calc(-1.0 * var(--len-4) + var(--len-1)); /* begin at the header */
+    height: calc(101% + var(--len-4) - var(--len-1)); /* extends line */
 }
 .timeline-dot {
     position: absolute;
     left: 50%;
-    top: calc(var(--len-3) + 0.5lh + 0.5lh); /* mimic the padding of contentbox */
+    top: 0.5lh; /* align dot with first line of title */
     translate: -50% -50%;
     width: var(--timeline-w-circle-big);
     aspect-ratio: 1;
     border-radius: 50%;
-    border: var(--len-1) solid var(--col-paper);
-    background-color: var(--col-blue-400);
+    border: var(--len-1) solid var(--col-white);
+    background-color: var(--col-accent);
 }
 .timeline-item.subitem .timeline-dot {
-    border-color: var(--col-blue-400);
-    background-color: var(--col-paper);
-    outline: var(--len-1) solid var(--col-paper);
+    top: calc(0.5lh); /* compensate for lineheight of title + the divider line */
+
+    border-color: var(--col-accent);
+    background-color: var(--col-white);
+    outline: var(--len-1) solid var(--col-white);
     width: var(--timeline-w-circle-small);
     aspect-ratio: 1;
-    top: calc(var(--len-3) + 0.5lh + var(--len-1)); /* compensate for the divider line */
   
 }
-.timeline-item:not(:has(+ .subitem)):not(:last-child) {
-    /* for flex growing the entire section, but only in the places where it makes sense */
-    flex-grow: var(--flex-grow-items);
-}
+
 
 
 /* timeline-contentbox ------------------------------------------------------ */
 .timeline-contentbox {
-    padding: var(--len-3);
-    padding-top: calc(var(--len-3) + 0.4lh); /* add some more space for the overlapping loc -> half a line h */
-    border-radius: 0 var(--rad-2) 0 var(--rad-2);
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) auto;
     grid-template-rows: auto 1fr;
     grid-template-areas: 
-      "title"
-      "desc";
+      "title loc"
+      "desc desc";
     position: relative;
     text-align: justify;
     align-self: start; /* to make sure that the contentbox itself doesn't flex grow */
-
-    /* background-color: var(--col-base-050); */
-    /* border: var(--len-1) solid var(--col-base-500); */
-
-
 }
-.timeline-item.subitem .timeline-contentbox {
-    /* just base properties for any subitem contentbox. generally don't need borders */
-    border-radius: 0px;
-    padding-top: var(--len-3); /* revert larger padding at top since no location on subitems! */
-    border-top: var(--len-1) solid var(--col-paper); /* add divider line */
-}
-.timeline-item:not(.subitem):has(+ .subitem) .timeline-contentbox {
-    /* selects every main item (not subitem) that is immediately followed by a subitem -> doesn't need the bottom borders since block will continue */
-    border-radius: 0 var(--rad-2) 0 0;
+.timeline-item.timeline-item.subitem .timeline-contentbox {
+    margin-left: var(--len-3);
 }
 .timeline-item:not(:has(+ .subitem)):not(:last-child) .timeline-contentbox {
     /* only margins EVERY item that is NOT followed by a subitem and that is not last in the timeline */
-    margin-bottom: var(--len-5);
+    margin-bottom: var(--len-3med);
 }
-.timeline-item.subitem:not(:has(+ .subitem)) .timeline-contentbox {
-    /* only last subitem of a block needs a bottom radius */
-    border-radius: 0 0 0 var(--rad-2);
+.timeline-item:has(+ .subitem):not(:last-child) .timeline-contentbox {
+    margin-bottom: var(--len-2);
 }
 .timeline-title {
     grid-area: title;
     font-variant-caps: small-caps;
     font-weight: bold;
-    color: var(--col-blue-400);
+    color: var(--col-accent);
+    text-align: left;
+    text-wrap: balance;
 }
 .timeline-item.subitem .timeline-title {
     font-weight: normal;
 }
 .timeline-loc {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    translate: 0 -50%;
-    text-align: right;
-    font-weight: bold;
-    color: var(--col-base-500);
-    border-radius: var(--rad-1) var(--rad-1) 0 var(--rad-1);
-    padding-inline: var(--len-3);
-    padding-block: var(--len-1);
-    background-color: var(--col-base-050);
-    outline: var(--len-1) solid var(--col-paper);
+    grid-area: loc;
     display: flex;
     flex-direction: row;
+
+    text-align: right;
+    font-weight: bold;
+    color: var(--col-grey);
+    padding-left: var(--len-4);
 }
 .timeline-item.subitem .timeline-loc {
     display: none; /* subitems don't show a location */
 }
 .timeline-locicon {
-    align-self: center;
-    background-color: var(--col-base-500);
+    align-self: start;
+    background-color: var(--col-grey);
     mask: url("../images/icon_location.png") center / contain no-repeat;
-    margin-left: calc(0.5*var(--len-3));
-    width: 0.9lh;
+    margin-left: calc(var(--len-2));
+    margin-top: 0.12lh;
+    width: 0.8lh;
     aspect-ratio: 1;
 } 
 .timeline-desc {
     grid-area: desc;
-    padding-top: var(--len-1);
     font-weight: lighter;
+    /* padding-top: var(--len-1); */
   
 }
 .timeline-desc:empty {
@@ -489,7 +458,7 @@ body {
 .skillbar {
     display: flex;
     flex-direction: column;
-    padding: var(--len-4);
+    padding: var(--len-3);
 }
 
 
@@ -498,7 +467,6 @@ body {
     display: grid;
     color: var(--col-black);
     grid-template-columns: auto repeat(4, var(--skillbar-w-pill));
-    gap: var(--len-1);
 }
 .skillbar-item > * {
     /* applies to all the children, name + 4pills */
@@ -515,14 +483,14 @@ body {
 }
 .skillbar-item:not(:has(+ .skillbar-item.subitem)):not(:last-child) {
     /* B + A combinator gives easy access to A directly after B sibling. buut there is no inverse - e.g. A before B sibling. this way, give each skillbar-item that IS NOT followed by a subitem a margin. also exclude the last element of the skills list! */
-    margin-bottom: var(--len-4);
+    margin-bottom: var(--len-3);
 }
 
 
 /* legend ------------------------------------------------------------------- */
 .skillbar-item > .skillbar-legend {
     /* only the very top skillbar item is a legend with the pill labels */
-    color: var(--col-blue-400);
+    color: var(--col-grey);
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     align-self: end;
@@ -533,23 +501,31 @@ body {
 /* pills -------------------------------------------------------------------- */
 .skillbar-item .skillbar-pill {
     /* main pill */
-    width: 100%;
+    width: 80%;
     height: var(--skillbar-h-pill-big);
-    border-radius: 9999px; /* browser scales this to 50% of the smallest side */
-    background-color: var(--col-base-500);
+    margin: auto;
+    border-radius: 999px; /* browser scales this to 50% of the smallest side */
+    background-color: var(--col-greybg);
 }
 .skillbar-item.subitem .skillbar-pill {
     /* subitem pill */
     width: 80%;
     height: var(--skillbar-h-pill-small);
     margin: auto;
+    /* background-color: color-mix(in oklab, var(--col-accent) 60%, var(--col-white)); */
 }
 .skillbar-item.lvl1 > .skillbar-pill:nth-child(-n + 1 of .skillbar-pill),
 .skillbar-item.lvl2 > .skillbar-pill:nth-child(-n + 2 of .skillbar-pill), 
 .skillbar-item.lvl3 > .skillbar-pill:nth-child(-n + 3 of .skillbar-pill),
 .skillbar-item.lvl4 > .skillbar-pill {
     /* -n+B is trick for [0-B] because -n goes backwards in steps of 1 and starts at 0, negative outcomes don't work. this would also work without ".of skillbar-pill" but then the name needs to be taken into account too (every nth-child +1). this way, selector only "considers" the children that have .skillbar-pill */
-    background-color: var(--col-blue-400); /* coloring pills according to level */
+    background-color: var(--col-accent); /* coloring pills according to level */
+}
+.skillbar-item.subitem.lvl1 > .skillbar-pill:nth-child(-n + 1 of .skillbar-pill),
+.skillbar-item.subitem.lvl2 > .skillbar-pill:nth-child(-n + 2 of .skillbar-pill), 
+.skillbar-item.subitem.lvl3 > .skillbar-pill:nth-child(-n + 3 of .skillbar-pill),
+.skillbar-item.subitem.lvl4 > .skillbar-pill {
+    background-color: var(--col-accent-light);
 }
 
 
@@ -557,7 +533,8 @@ body {
 .langs {
     display: flex;
     flex-direction: column;
-    padding: var(--len-4);
+    gap: var(--len-3med);
+    padding: var(--len-3);  
 }
 .langs-item {
     display: grid;
@@ -566,7 +543,6 @@ body {
     grid-template-areas: 
         "icon name line level"
         "x desc desc desc";
-    margin-bottom: var(--len-4);
     align-items: center;
 }
 .langs-icon {
@@ -585,7 +561,7 @@ body {
     grid-area: line;
     align-self: end;
     height: 0px;
-    border-top: var(--langs-h-dashline) dashed var(--col-blue-400);
+    border-top: var(--langs-h-dashline) dashed var(--col-accent);
     margin-inline: var(--len-3);
     margin-bottom: 0.4lh; /* centering doesn't reeeally look centered with smallcaps -> shift a bit */
 }
@@ -593,6 +569,7 @@ body {
     grid-area: level;
     font-variant-caps: small-caps;
     font-weight: bold;
+    color: var(--col-accent);
 }
 .langs-desc {
     grid-area: desc;
@@ -607,12 +584,51 @@ body {
 
 /* Interests ======================================================================================================== */
 .interests {
-    padding: var(--len-4);
+    padding: var(--len-3);
 }
 
 
+
+/* ================================================================================================================== */
+/* PRINT / SAVE AS PDF ============================================================================================== */
+/* ================================================================================================================== */
+
+@page {
+    size: A4 portrait;
+    margin: 0; /* no browser margins (also removes the browser's header/footer with date & url) */
+}
+@media print {
+    *, *::before, *::after {
+        /* browsers drop all background colors when printing by default -> force them to be kept */
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    html {
+        scrollbar-gutter: auto;
+    }
+    body {
+        display: block; /* page breaks are more reliable outside of a flexbox */
+        width: auto;
+        min-height: 0;
+        overflow: visible;
+        background-color: var(--col-white);
+    }
+    .A4 {
+        /* the page is designed 1000px wide, A4 is 210mm = 793.7px -> scale the entire page down to fit exactly */
+        zoom: 0.7937;
+        margin: 0;
+        overflow: hidden; /* nothing can spill over and create an extra empty page */
+        break-inside: avoid;
+    }
+    .A4:not(:last-child) {
+        break-after: page;
+    }
+}
+
+
+
 /* show all boxes with a slight background and slight outline */
-/* * {
+/* *:not(.timeline-locicon) {
   background-color: rgb(255 0 0 / 0.02) !important;
   outline: 1px solid rgb(255 0 0 / 0.2) !important;
 } */

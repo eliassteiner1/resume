@@ -1,18 +1,18 @@
 # watch out: colon followed by space needs to be wrapped in quotes!
 # watch out: wrap dates in quotes, otherwise parsed as integers while something like 2025-2026 is parsed as string anyways
 
-- date: "-2026<br>2025"
+- date: "2026<br>•<br>2025"
   title: "Civil Service"
   location: "Balgrist Campus"
   desc: "Working on various projects related to medical robotics with a strong focus on computer vision and dataset procuration for publications"
 
 - date: "2023-2025"
-  title: "Student-Job: Data Analysis (Part Time)"
+  title: "Student-Job: Data Analysis <br>(Part Time)"
   location: "Sensirion Stäfa"
   desc: "Data analysis with Python for a methane gas emission detection system for crude oil production sites"
 
 - date: "2023-2024"
-  title: "Student-Job: Data Analysis (Part Time)"
+  title: "Student-Job: Tutoring <br>(Part Time)"
   location: "ABACUS Nachhilfe"
   desc: "Individual tutoring for high school students (Physics & Mathematics)"
 

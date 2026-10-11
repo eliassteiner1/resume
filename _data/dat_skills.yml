@@ -4,21 +4,40 @@
   level: 4
   subitems:
     - name: "Pytorch"
-      level: 1
+      level: 3
     - name: "Numpy & Pandas"
-      level: 1
+      level: 4
+    - name: "Plotly & Dash"
+      level: 4
 
 - name: "C++"
   level: 1
 
-- name: "microsoft office"
+- name: "Web Frontend"
   level: 2
   subitems:
-    - name: "Pytorch"
-      level: 2
+    - name: "HTML & CSS"
+      level: 3
+    - name: "JavaScript"
+      level: 1
 
-- name: "C++"
-  level: 1
+- name: "Linux"
+  level: 2
+
+- name: "Git"
+  level: 2
+
+- name: "ROS"
+  level: 3
 
 - name: "Matlab"
   level: 1
+
+- name: "Microsoft Office"
+  level: 4
+
+- name: "Various CAD"
+  level: 3
+
+
+
