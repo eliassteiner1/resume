@@ -21,3 +21,5 @@ some classes for basecontainer (no-header, ..., no-bg, ..)
 make clear which sizes are tunable (especially of the bigger ones, like two column split, height photo, height banner, etc)
 
 fix relative url in css for locicon mask! (but how?)
+
+move fontsize and weight to top and properly inherit (maybe from basecontainer)

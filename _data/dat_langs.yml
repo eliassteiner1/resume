@@ -1,7 +1,7 @@
 
 - name: "German"
   icon: "icon_switzerland.png"
-  level: "Native Speaker"
+  level: "Native"
   desc: ""
 
 - name: "English"

@@ -3,7 +3,10 @@
 <!-- makes sense to atomize this, as it can be used as either an item or subitem  -->
 
 <div class="timeline-item{% if include.sub %} subitem{% endif %}">
-    <div class="timeline-date">{{ include.item.date }}</div>
+    <div class="timeline-date">
+        <div>{{ include.item.date_main }}</div>
+        <div>{{ include.item.date_start }}</div>
+    </div>
     <div class="timeline-track">
         <div class="timeline-line"></div>
         <div class="timeline-dot"></div>
