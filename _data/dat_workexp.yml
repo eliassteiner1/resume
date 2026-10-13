@@ -1,0 +1,22 @@
+# watch out: colon followed by space needs to be wrapped in quotes!
+# watch out: wrap dates in quotes, otherwise parsed as integers while something like 2025-2026 is parsed as string anyways
+
+- date: "11.25-02.26"
+  title: "Civil Service: Medical Robotics"
+  location: "Balgrist"
+  desc: "Dataset curation for hand pose estimation, labelling. Dateset curation for learned gaussian spaltting, developed tool for camera synchronization and checking for motion (calib-move). Program and assemble rocsync, adjust code (temp), soldering."
+
+- date: "09.23-01.25"
+  title: "Student-Job: Data Analysis"
+  location: "Sensirion"
+  desc: "helped developing new gas emission estimation tool. data visualization, plotting, understanding, interactive."
+
+- date: "02.20-06.24"
+  title: "Teaching Assistance"
+  location: "ETH Zürich"
+  desc: "Helping Students in understanding lecture material, reviewing key concepts. Teach classes of 20-50 people. Developed custom teaching materials."
+
+- date: "02.22-06.22"
+  title: "Industry Internship"
+  location: "Biotronik"
+  desc: "Testing catheters stents balloons for health guidelines. Troubleshooting, visualization & investigation of manufacturing errors"

@@ -1,15 +1,24 @@
 <!-- main content -->
 {% capture content %}
-    <div>
-        testttto container
-    </div>
+    <!-- loop over just the main items -->
+    {% for item in site.data.dat_workexp %}
+        
+        <!-- add en item for each main entry -->
+        {% include timeline_item.html item=item %}
+        
+        <!-- loop over the subitems, just returns nothing if empty -->
+        {% for subitem in item.subitems %}
+            {% include timeline_item.html item=subitem sub=true %}
+        {% endfor %}
+
+    {% endfor %}
 {% endcapture %}
 
 
 <!-- wrap everything in a basecontainer -->
 {% 
     include basecontainer.html
-    title=include.title
+    title=site.data.dat_main.title_workexp
     extraclass="workexp"
     content=content
 %}

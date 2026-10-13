@@ -8,23 +8,20 @@ permalink: /
 
 <div class="A4">
 
-    {%
-        include person.html
-    %}
+    {% include person.html %}
 
-    {%
-        include contact.html
-    %}
+    {% include contact.html %}
 
     <div class="column column-left">
-        {%
-            include workexp.html
-            title="Work Experience"
-            
-        %}
+        {% include workexp.html %}
+        {% include education.html %}
+        {% include otherexp.html %}
     </div>
 
     <div class="column column-right">
+        {% include skills.html %}
+        {% include langs.html %}
+        {% include extracurr.html %}
     </div>
 
 </div>

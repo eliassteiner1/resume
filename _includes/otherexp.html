@@ -1,0 +1,24 @@
+<!-- main content -->
+{% capture content %}
+    <!-- loop over just the main items -->
+    {% for item in site.data.dat_otherexp %}
+        
+        <!-- add en item for each main entry -->
+        {% include timeline_item.html item=item %}
+        
+        <!-- loop over the subitems, just returns nothing if empty -->
+        {% for subitem in item.subitems %}
+            {% include timeline_item.html item=subitem sub=true %}
+        {% endfor %}
+
+    {% endfor %}
+{% endcapture %}
+
+
+<!-- wrap everything in a basecontainer -->
+{% 
+    include basecontainer.html
+    title=site.data.dat_main.title_otherexp
+    extraclass="otherexp"
+    content=content
+%}

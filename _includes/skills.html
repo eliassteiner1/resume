@@ -1,0 +1,15 @@
+<!-- main content -->
+{% capture content %}
+    <div>
+        skills contennnnt
+    </div>
+{% endcapture %}
+
+
+<!-- wrap everything in a basecontainer -->
+{% 
+    include basecontainer.html
+    title=site.data.dat_main.title_skills
+    extraclass="skills"
+    content=content
+%}
