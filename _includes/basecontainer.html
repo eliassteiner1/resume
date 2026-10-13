@@ -2,5 +2,7 @@
     <div class="basecontainer-header">
         {{ include.title }}
     </div>
-    {{ include.content }}
+    <div class="basecontainer-content {{ include.extraclass }}">
+        {{ include.content }}
+    </div>
 </div>

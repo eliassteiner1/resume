@@ -1,0 +1,15 @@
+<!-- main content -->
+{% capture content %}
+    <div>
+        testttto container
+    </div>
+{% endcapture %}
+
+
+<!-- wrap everything in a basecontainer -->
+{% 
+    include basecontainer.html
+    title=include.title
+    extraclass="workexp"
+    content=content
+%}
