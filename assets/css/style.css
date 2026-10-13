@@ -52,7 +52,7 @@
 
     /* border radiuses */
     --rad-1: 12px;
-    --rad-2: 18px;
+    --rad-2: 24px;
 }
 
 
@@ -85,7 +85,7 @@ html {
 
 
 /* ================================================================================================================== */
-/* GENERIC FORMATTING =============================================================================================== */
+/* MAIN FORMATTING ================================================================================================== */
 /* ================================================================================================================== */
 
 body {
@@ -94,8 +94,8 @@ body {
     flex-direction: column;
     align-items: center;
 
-    width: 100vw; /* TEMP remove: just to make navigation easier with fixed a4 size */
-    overflow: scroll; /* TEMP remove: just to make navigation easier with fixed a4 size */
+    width: 100vw; /* TODO remove: just to make navigation easier with fixed a4 size */
+    overflow: scroll; /* TODO remove: just to make navigation easier with fixed a4 size */
 }
 .A4 {
     background-color: var(--col-white);
@@ -109,20 +109,20 @@ body {
         "person contact"
         "left right";
 
-    /* TEMP  figure out correct padding for main page */
-    padding: var(--len-3med);
-    padding-bottom: var(--len-4);
-    column-gap: var(--len-3med); 
+    /* TODO figure out correct padding for main page */
+    padding-inline: var(--len-4med);
+    padding-block: var(--len-4);
+    column-gap: var(--len-3); 
+    row-gap: var(--len-3);
 }
 
 .column {
     display: flex;
     flex-direction: column;
-    /* justify-content: start; */
-    gap: var(--len-4);
+    justify-content: start; /* move all the basecontainers to the start unless they flex grow themselves */
+    gap: var(--len-3); /* TODO figure out later */
 
-
-    background-color: magenta;
+    background-color: magenta; /* TEMP */
 }
 .column-left {
     grid-area: left;
@@ -131,14 +131,54 @@ body {
     grid-area: right;
 }
 
+/* Top Elements ===================================================================================================== */
+
+/* Person ------------------------------------------------------------------- */
+.person {
+    grid-area: person;
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr);
+    grid-template-rows: auto auto minmax(0, 1fr);
+    grid-template-areas: 
+        "img name"
+        "img role"
+        "img link";
+}
+.person-portrait {
+    grid-area: img;
+    width: 100%;
+    aspect-ratio: 0.8;
+    object-fit: cover;
+    object-position: center;
+    border-radius: var(--rad-1);
+}
+.person-name {
+    grid-area: name;
+    font-size: var(--fsize-up3);
+}
+.person-role {
+    grid-area: role;
+    font-size: var(--fsize-up1);
+}
+.person-link {
+    grid-area: link;
+    align-self: end;
+    font-size: var(--fsize-up1);
+}
+
+
+/* Contact ------------------------------------------------------------------ */
+.contact {
+    grid-area: contact;
+}
+
 
 /* Basecontainer ==================================================================================================== */
 
 
-/* banners & top elements =========================================================================================== */
 
 
-/* Info ============================================================================================================= */
+
 
 /* Timeline (Work Experience & Education) =========================================================================== */
 /* timeline-date ------------------------------------------------------------ */
@@ -203,7 +243,7 @@ ol {
 }
 
 /* show all boxes with a slight background and slight outline */
-/* *:not(.timeline-locicon) {
+*:not(.timeline-locicon) {
   background-color: rgb(255 0 0 / 0.02) !important;
   outline: 1px solid rgb(255 0 0 / 0.2) !important;
-} */
+}
