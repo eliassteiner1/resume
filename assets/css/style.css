@@ -51,7 +51,7 @@
 
     --fwght-base: 200;
     --fwght-up1:  450;
-    --fwght-up2:  650;
+    --fwght-up2:  630;
     --fwght-up3:  700;
 
     --fwidth-base:   115%;
@@ -76,7 +76,7 @@
     --w-line-basecontainer: 2px;
     --portrait-width: 160px;
     --portrait-aspectr: 1.0;
-    --date-width: 84px;
+    --date-width: 82px;
 }
 
 
