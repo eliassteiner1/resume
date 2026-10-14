@@ -74,7 +74,7 @@
     /* random handles */
     --portrait-width: 140px;
     --portrait-aspectr: 0.9;
-    --date-width: 90px;
+    --date-width: 82px;
 }
 
 
@@ -133,7 +133,7 @@ body {
     /* TODO figure out correct padding for main page */
     padding-inline: var(--len-4med);
     padding-block: var(--len-4);
-    column-gap: var(--len-3); 
+    column-gap: var(--len-4); 
     row-gap: var(--len-3);
     /* TEMP just to see if content is too much */
     overflow: hidden;
@@ -210,6 +210,9 @@ body {
 .basecontainer-content {
     padding-top: var(--len-2);
 }
+.column-right .basecontainer-header {
+    text-align: right;
+}
 
 
 /* Timeline Els (Work Experience & Education & Other Experiences) =================================================== */
@@ -220,13 +223,13 @@ body {
     grid-template-areas: 
         "date title loc"
         "x desc desc";
+    align-items: baseline; /* correctly aligns fonts of multiple sizes at their baseline */
     column-gap: var(--len-2);
 }
 .timeline-date {
     grid-area: date;
-    text-align: right;
-    align-self: end;
-    padding-bottom: 0.04lh;
+    display: flex;
+    justify-content: space-between; /* start date left, end date right, dash centered in the remaining space */
     font-stretch: var(--fwidth-narrow);
     color: var(--col-accent);
 }
@@ -238,8 +241,9 @@ body {
 .timeline-location {
     grid-area: loc;
     text-align: right;
-    font-size: var(--fsize-up1);
-    font-variant-caps: small-caps;
+    /* font-size: var(--fsize-up1); */
+    /* font-variant-caps: small-caps; */
+    color: var(--col-accent);
 }
 .timeline-location:empty {
     display: none; /* hide if nothing specified */
@@ -272,10 +276,59 @@ body {
 
 
 /* skills =========================================================================================================== */
-
+.skills {
+}
+.skills-category {
+    font-size: var(--fsize-up1);
+    font-weight: var(--fwght-up2);
+    font-variant: small-caps;
+}
+.skills-item {
+    position: relative;
+    margin-left: var(--len-3med);
+    padding-left: var(--len-2);
+}
+.skills-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    translate: 0 calc(-50% + 0.5lh); /* to center the element */
+    width: 3px;
+    height: 0.5lh;
+    background-color: var(--col-grey);
+}
 
 
 /* Languages ======================================================================================================== */
+.langs {
+}
+.langs-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-areas: 
+        "name level"
+        "desc desc";
+    align-items: baseline; /* correctly aligns fonts of multiple sizes at their baseline */
+
+}
+.langs-name {
+    grid-area: name;
+    font-size: var(--fsize-up1);
+    font-weight: var(--fwght-up2);
+    font-variant: small-caps;
+}
+.langs-level {
+    grid-area: level;
+    font-weight: var(--fwght-up2);
+    /* font-variant: small-caps; */
+    color: var(--col-accent);
+}
+.langs-desc {
+    grid-area: desc;
+    text-align: justify;
+}
 
 
 

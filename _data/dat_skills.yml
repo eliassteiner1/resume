@@ -1,0 +1,20 @@
+- name: "Programming"
+  subitems:
+    - "Python (Numpy & Pandas, Plotly & Dash, Pytorch, OpenCV)"
+    - "C++"
+    - "Matlab"
+    - "HTML & CSS"
+    - "JavaScript"
+
+- name: "Development Tools"
+  subitems:
+    - "Linux"
+    - "Git"
+    - "ROS I"
+
+- name: "Design & Fabrication"
+  subitems:
+    - "Various CAD (Onshape, Siemens NX, SolidWorks)"
+    - "3D Printing"
+    - "Soldering"
+    - "Machining"

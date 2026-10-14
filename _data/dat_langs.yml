@@ -1,0 +1,16 @@
+
+- name: "German"
+  level: "Native"
+  desc: ""
+
+- name: "English"
+  level: "C1-C2"
+  desc: "Excellent knowledge (CAE in 2015)"
+
+- name: "Spanish"
+  level: "B2-C1"
+  desc: "Good knowledge from self-study and courses taken at University of Zürich"
+
+- name: "French"
+  level: "B1"
+  desc: "Basic knowledge from French classes"
