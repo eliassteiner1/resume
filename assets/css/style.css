@@ -130,9 +130,9 @@ body {
         "person contact"
         "left right";
     /* TODO figure out padding for main page things */
-    padding-inline: var(--len-4med);
-    padding-block: var(--len-4);
-    column-gap: var(--len-4); 
+    padding-inline: var(--len-5);
+    padding-block: var(--len-3med);
+    column-gap: var(--len-3med); 
     row-gap: var(--len-3med);
 }
 .column {
