@@ -5,7 +5,8 @@
   date_end: "02.26"
   title: "Civil Service: Medical Robotics"
   location: "Balgrist"
-  desc: 
+  desc_direct: ""
+  desc_bullet:
     - "Dataset curation for hand pose estimation, labelling."
     - "Dateset curation for learned gaussian spaltting, developed tool for camera synchronization and checking for motion (calib-move)." 
     - "Program and assemble rocsync, adjust code (temp), soldering."
@@ -14,7 +15,8 @@
   date_end: "01.25"
   title: "Student-Job: Data Analysis"
   location: "Sensirion"
-  desc: 
+  desc_direct: ""
+  desc_bullet:
     - "helped developing new gas emission estimation tool."
     - "data visualization, plotting, understanding, interactive."
 
@@ -22,7 +24,8 @@
   date_end: "06.24"
   title: "Teaching Assistance"
   location: "ETH Zürich"
-  desc: 
+  desc_direct: ""
+  desc_bullet:
     - "Helping Students in understanding lecture material, reviewing key concepts." 
     - "Teach classes of 20-50 people. Developed custom teaching materials."
 
@@ -30,6 +33,7 @@
   date_end: "06.22"
   title: "Industry Internship"
   location: "Biotronik"
-  desc: 
+  desc_direct: ""
+  desc_bullet:
     - "Testing catheters stents balloons for health guidelines." 
     - "Troubleshooting, visualization & investigation of manufacturing errors"

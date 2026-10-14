@@ -1,8 +1,13 @@
 <!-- main content -->
 {% capture content %}
-    <div>
-        extracurr contennnnt
-    </div>
+    {% for item in site.data.dat_extracurr %}
+        <div class="extracurr-item">{{ item.name }}</div>
+
+        {% for subitem in item.subitems %}
+            <div class="extracurr-subitem">{{ subitem }}</div>
+        {% endfor %}
+        
+    {% endfor %}
 {% endcapture %}
 
 

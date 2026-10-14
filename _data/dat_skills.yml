@@ -1,10 +1,10 @@
 - name: "Programming"
   subitems:
-    - "Python (Numpy & Pandas, Plotly & Dash, Pytorch, OpenCV)"
-    - "C++"
+    - "Python (Pytorch, OpenCV, Numpy, Pandas, Dash)"
+    - "C++ (basics)"
     - "Matlab"
     - "HTML & CSS"
-    - "JavaScript"
+    - "JavaScript (basics)"
 
 - name: "Development Tools"
   subitems:

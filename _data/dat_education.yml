@@ -5,42 +5,45 @@
   date_end: "06.25"
   title: "Master's Degree: Mechanical Engineering"
   location: "ETH Zürich"
-  desc:
+  desc_direct: ""
+  desc_bullet:
     - "Focus on Robotic, Machinelearning and Computer Vision"
   subitems:
     - date_start: "10.24"
       date_end: "06.25"
       title: "Master Thesis"
       location: "ASL at ETH"
-      desc:
-        - "<i>Exploring Aerial Manipulation with an Omnidirectional Hexacopter.</i>"
+      desc_direct: "<i>Exploring Aerial Manipulation with an Omnidirectional Hexacopter.</i>"
+      desc_bullet:
         - "Vision based object tracking, implementation of controls with Riemannian Motion Policies and hardware design for aerial manipulation tasks with a six-degree-of-freedom hexacopter."
     - date_start: "03.24"
       date_end: "07.24"
       title: "Semester Thesis"
       location: "RSL at ETH"
-      desc:
-        - "<i>Task Oriented Robotic Grasping for Robot-Human Handovers.</i>"
+      desc_direct: "<i>Task Oriented Robotic Grasping for Robot-Human Handovers.</i>"
+      desc_bullet:
         - "Use of geometric deep learning for non-rigid 3D shape matching and texture transfer for segmentation of point clouds"
     - date_start: "08.22"
       date_end: "01.23"
       title: "Exchange Semester in Barcelona"
       location: "UPC"
-      desc: []
+      desc_direct: ""
+      desc_bullet: []
 
 - date_start: "09.18"
   date_end: "01.22"
   title: "Bachelor's Degree: Mechanical Engineering"
   location: "ETH Zürich"
-  desc:
+  desc_direct: ""
+  desc_bullet:
     - "Focus on Microsystems and Nanoscale Engineering"
   subitems:
     - date_start: "07.21"
       date_end: "01.22"
       title: "Bachelor Thesis"
       location: "MSRL at ETH"
-      desc:
-        - "<i>Autonomous Steering of a Magnetic Catheter for Spinal Cord Stimulation.</i>"
+      desc_direct: "<i>Autonomous Steering of a Magnetic Catheter for Spinal Cord Stimulation.</i>"
+      desc_bullet:
         - "Design and fabrication of a magnetic catheter, steered via an autonomous control algorithm and tested in custom-developed epidural space models of the human spine"
 
 

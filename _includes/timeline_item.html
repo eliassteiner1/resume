@@ -7,8 +7,9 @@
     <div class="timeline-title">{{ include.item.title }}</div>
     <div class="timeline-location">{{ include.item.location }}</div>
     <div class="timeline-desc">
-        {% for point in include.item.desc %}
-            <div>{{ point }}</div>
+        <div>{{ include.item.desc_direct }}</div>
+        {% for point in include.item.desc_bullet %}
+            <div class="bullet">{{ point }}</div>
         {% endfor %}
     </div>
 </div>

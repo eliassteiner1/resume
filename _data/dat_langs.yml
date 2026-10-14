@@ -5,12 +5,12 @@
 
 - name: "English"
   level: "C1-C2"
-  desc: "Excellent knowledge (CAE in 2015)"
+  desc: "At least CAE in 2015"
 
 - name: "Spanish"
   level: "B2-C1"
-  desc: "Good knowledge from self-study and courses taken at University of Zürich"
+  desc: "Mainly self-study, travelling and living abroad, courses taken at University of Zürich"
 
 - name: "French"
   level: "B1"
-  desc: "Basic knowledge from French classes"
+  desc: "Basic knowledge from school"
