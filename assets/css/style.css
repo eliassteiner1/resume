@@ -36,14 +36,12 @@
     /* color definitions */
     --col-black:  #100F0F;
     --col-white:  #FFFFFF;
-    --col-grey:   rgb(210, 210, 210);
     --col-accent: #4475A0;
-    --col-accent-light: color-mix(in oklab, var(--col-accent) 60%, var(--col-white));
 
     /* font definitions */
-    --root-font-fam: "EncodeSans-Variable";
+    --root-font-fam:    "EncodeSans-Variable";
     --root-line-height: 1.04;
-    --root-fsize: 16px; /* just base definition, all fsize-... depend on rem and therefore this here */
+    --root-fsize:       16px; /* just base definition, all fsize-... depend on rem and therefore this here */
     --root-fsize-ratio: 1.30;
 
     --fsize-base: 1rem;
@@ -51,11 +49,10 @@
     --fsize-up2:  calc(1rem * pow(var(--root-fsize-ratio), 2));
     --fsize-up3:  calc(1rem * pow(var(--root-fsize-ratio), 3));
 
-    --fwght-base: 220;
+    --fwght-base: 200;
     --fwght-up1:  450;
-    --fwght-up2:  620;
+    --fwght-up2:  650;
     --fwght-up3:  700;
-    --fwght-up4:  800;
 
     --fwidth-base:   115%;
     --fwidth-narrow:  75%;
@@ -75,11 +72,11 @@
     --rad-1: 12px;
     --rad-2: 24px;
 
-
     /* random handles */
+    --w-line-basecontainer: 2px;
     --portrait-width: 160px;
     --portrait-aspectr: 1.0;
-    --date-width: 82px;
+    --date-width: 84px;
 }
 
 
@@ -120,12 +117,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    width: 100vw; /* TODO remove: just to make navigation easier with fixed a4 size */
-    overflow: scroll; /* TODO remove: just to make navigation easier with fixed a4 size */
 }
 .A4 {
-    container-type: inline-size; /* lets children use cqw = 1% of the page's content width */
     background-color: var(--col-white);
     width: 1000px;
     aspect-ratio: 1/sqrt(2); /* to get DIN A format */
@@ -136,14 +129,11 @@ body {
     grid-template-areas: 
         "person contact"
         "left right";
-
-    /* TODO figure out correct padding for main page */
+    /* TODO figure out padding for main page things */
     padding-inline: var(--len-4med);
     padding-block: var(--len-4);
     column-gap: var(--len-4); 
     row-gap: var(--len-3med);
-    /* TEMP just to see if content is too much */
-    overflow: hidden;
 }
 .column {
     display: flex;
@@ -184,7 +174,7 @@ body {
 .person-name {
     grid-area: name;
     font-size: var(--fsize-up3);
-    font-weight: var(--fwght-up4);
+    font-weight: var(--fwght-up3);
 }
 .person-role {
     grid-area: role;
@@ -205,21 +195,20 @@ body {
     flex-direction: column;
     gap: var(--len-3);
     text-align: right;
-    /* font-weight: var(--fwght-up1); */
 }
 
 
 /* Basecontainer ==================================================================================================== */
 .basecontainer {
     flex-grow: 0; /* make all the containers fill the entire column and extra-stretch equally */
-    border-top: 2px solid var(--col-black);
+    border-top: var(--w-line-basecontainer) solid var(--col-black);
 }
 .basecontainer:not(:last-child) {
     flex-grow: 1; /* only grow the non-last containers to still fill the page to the very bottom */
 }
 .basecontainer-header {
     font-size: var(--fsize-up2);
-    font-weight: var(--fwght-up3);
+    font-weight: var(--fwght-up2);
     padding-top: 0.10lh; /* sliiightly move the top line away from title font */
 }
 .basecontainer-content {
@@ -292,8 +281,6 @@ body {
 
 
 /* skills =========================================================================================================== */
-.skills {
-}
 .skills-category {
     font-size: var(--fsize-up1);
     font-weight: var(--fwght-up2);
@@ -317,8 +304,6 @@ body {
 
 
 /* Languages ======================================================================================================== */
-.langs {
-}
 .langs-item {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
@@ -340,7 +325,6 @@ body {
 .langs-level {
     grid-area: level;
     font-weight: var(--fwght-up2);
-    /* font-variant: small-caps; */
     color: var(--col-accent);
 }
 .langs-desc {
@@ -354,8 +338,6 @@ body {
 
 
 /* Extracurricular ================================================================================================== */
-.extracurr {
-}
 .extracurr-item {
     font-size: var(--fsize-up1);
     font-weight: var(--fwght-up2);

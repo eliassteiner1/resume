@@ -13,14 +13,10 @@
     {% endif %}
     
     <!-- only actually create a description if it has content -->
-    {% if include.item.desc_direct or include.item.desc_bullet %}
+    {% if include.item.desc %}
         <div class="timeline-desc">
-            <!-- include a direct description only if it actually has content -->
-            {% if include.item.desc_direct %}
-                <div>{{ include.item.desc_direct }}</div>
-            {% endif %}
-            {% for point in include.item.desc_bullet %}
-                <div>{{ point }}</div>
+            {% for line in include.item.desc %}
+                <div>{{ line }}</div>
             {% endfor %}
         </div>
     {% endif %}
