@@ -80,8 +80,6 @@
     --portrait-width: 160px;
     --portrait-aspectr: 1.0;
     --date-width: 82px;
-    --h-bullets: 12px;
-    --w-bullets: 3px
 }
 
 
@@ -158,22 +156,6 @@ body {
 .column-right {
     grid-area: right;
 }
-
-
-.bullet {
-    position: relative;
-    text-align: justify;
-}
-/* .bullet::before {
-    content: "";
-    position: absolute;
-    top: calc(0.5lh - 0.5*var(--h-bullets));
-    bottom: calc(0.5lh - 0.5*var(--h-bullets));
-    left: 0;
-    translate: calc(-100% - var(--len-1)) 0; 
-    width: var(--w-bullets);
-    background-color: var(--col-grey);
-} */
 
 
 /* Top Elements ===================================================================================================== */
@@ -277,9 +259,6 @@ body {
     text-align: right;
     color: var(--col-accent);
 }
-.timeline-location:empty {
-    display: none; /* hide if nothing specified */
-}
 .timeline-desc {
     grid-area: desc;
     display: flex;
@@ -289,12 +268,9 @@ body {
     padding-top: var(--len-1); /* spacing between title and first elements needs to be a bit smaller */
     padding-left: var(--len-2);
 }
-.timeline-desc > div:empty {
-    display: none; /* hide if nothing specified */
-}
-.timeline-item.subitem .timeline-desc,
-.timeline-item.subitem .timeline-title {
-    margin-left: var(--len-3); /* indentation for subitems */
+.timeline-desc > div:has(.stretch) {
+    /* kinda hacky. the thesis titles should be fully stretched no matter what. for this an empty span is added to it's div with the class justify. this is the only way to target only these few divs */
+    text-align-last: justify;
 }
 .timeline-item:not(.subitem) .timeline-date,
 .timeline-item:not(.subitem) .timeline-title,
@@ -311,7 +287,7 @@ body {
     margin-bottom: var(--len-3); /* separation between main block */
 }
 .timeline-item:has(+ .subitem) {
-    margin-bottom: var(--len-2med); /* separation within subitem block */
+    margin-bottom: var(--len-1med); /* separation within subitem block */
 }
 
 
@@ -330,6 +306,7 @@ body {
     font-weight: var(--fwght-up1);
     margin-left: var(--len-3);
     font-variant: small-caps;
+    text-align: justify;
 }
 .skills-subitem + .skills-subitem {
     margin-top: var(--len-1med);
@@ -441,13 +418,8 @@ body {
 /* TEMP STUFF ======================================================================================================= */
 /* ================================================================================================================== */
 
-ul,
-ol {
-    padding-left: 1.6em; /* room for the bullets, reset before by removing all padding and margin */
-}
-
 /* show all boxes with a slight background and slight outline */
-/* *:not(.timeline-locicon) {
+/* * {
   background-color: rgb(255 0 0 / 0.02) !important;
   outline: 1px solid rgb(255 0 0 / 0.2) !important;
 } */

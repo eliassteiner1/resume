@@ -4,18 +4,18 @@
 - date_start: "11.25"
   date_end: "02.26"
   title: "Civil Service: Medical Robotics"
-  location: "Balgrist"
+  location: "Balgrist Zürich"
   desc_direct:
   desc_bullet:
     - "Curated & synchronized multi-view surgical footage dataset (20-30 cameras) for 3D scene reconstruction using Gaussian Splatting"
     - "Developed tool to detect camera drift using keypoint detection & feature matching"
-    - "Reprogrammed microcontroller of LED-clock camera sync panel & adapted its visual detection script"
+    - "Reprogrammed microcontroller of LED-clock for camera synchronization panel & adapted its visual detection script"
     # - "Labelled multi-view footage for a hand pose estimation dataset"
 
 - date_start: "09.23"
   date_end: "01.25"
   title: "Student Job: Data Analysis"
-  location: "Sensirion"
+  location: "Sensirion Stäfa"
   desc_direct:
   desc_bullet:
     - "Analyzed wind & methane sensor data to localize gas leaks"
@@ -31,9 +31,9 @@
 
 - date_start: "02.22"
   date_end: "06.22"
-  title: "Internship: R&D of Cardiovascular Implants"
-  location: "Biotronik"
+  title: "Internship: R&D Cardiovascular Implants"
+  location: "Biotronik Bülach"
   desc_direct:
   desc_bullet:
-    - "Investigated manufacturing defects by injecting fluorescent dye to reveal glue failures"
+    - "Discovered manufacturing defects in catheters by injecting fluorescent dye to reveal glue failures"
     - "Helped develop test methods for stents under the revised ISO 25539-2"
