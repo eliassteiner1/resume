@@ -1,14 +1,19 @@
 // Stretch the last line of justified text if it already fills most of the line anyway.
 // Otherwise a nearly-full last line sits slightly ragged next to the justified lines above it.
 
-const STRETCH_THRESHOLD = 0.9; // last line width / available width above which it gets stretched
+const STRETCH_THRESHOLD = 0.82; // last line width / available width above which it gets stretched
 
-// all elements that are justified and directly contain text (skips pure wrappers like .timeline-desc)
+// the nearest non-inline ancestors of all text, if justified (text-align-last has no effect on inline elements like <i>)
 function getJustifiedTextEls() {
-    return [...document.body.querySelectorAll("*")].filter(el =>
-        getComputedStyle(el).textAlign === "justify" &&
-        [...el.childNodes].some(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim())
-    );
+    const els = new Set();
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) {
+        if (!walker.currentNode.textContent.trim()) continue;
+        let el = walker.currentNode.parentElement;
+        while (getComputedStyle(el).display === "inline") el = el.parentElement;
+        if (getComputedStyle(el).textAlign === "justify") els.add(el);
+    }
+    return [...els];
 }
 
 // width of the last rendered line relative to the element's content box
