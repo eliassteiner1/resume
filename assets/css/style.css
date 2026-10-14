@@ -51,22 +51,23 @@
 
     --fwght-base: 200;
     --fwght-up1:  450;
-    --fwght-up2:  630;
+    --fwght-up2:  600;
     --fwght-up3:  700;
 
     --fwidth-base:   115%;
     --fwidth-narrow:  75%;
 
     /* length units to have a consistent design */
-    --len-1:     4px;
-    --len-1med:  6px;
-    --len-2:     8px;
-    --len-2med: 12px;
-    --len-3:    16px;
-    --len-3med: 24px;
-    --len-4:    32px;
-    --len-4med: 48px;
-    --len-5:    64px; 
+    --len-base: 4px;
+    --len-1:    calc(var(--len-base) * pow(2, 0));
+    --len-1med: calc(var(--len-base) * pow(2, 0.5));
+    --len-2:    calc(var(--len-base) * pow(2, 1));
+    --len-2med: calc(var(--len-base) * pow(2, 1.5));
+    --len-3:    calc(var(--len-base) * pow(2, 2));
+    --len-3med: calc(var(--len-base) * pow(2, 2.5));
+    --len-4:    calc(var(--len-base) * pow(2, 3));
+    --len-4med: calc(var(--len-base) * pow(2, 3.5));
+    --len-5:    calc(var(--len-base) * pow(2, 4));
 
     /* border radiuses */
     --rad-1: 12px;
