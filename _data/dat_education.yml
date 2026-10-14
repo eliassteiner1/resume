@@ -5,24 +5,27 @@
   date_end: "06.25"
   title: "Master's Degree: Mechanical Engineering"
   location: "ETH Zürich"
-  desc_direct: ""
-  desc_bullet:
-    - "Focus on Robotic, Machinelearning and Computer Vision"
+  desc_direct: "Focus on Robotics, Machinelearning and Computer Vision (GPA: 5.40/6.0)"
+  desc_bullet: []
   subitems:
     - date_start: "10.24"
       date_end: "06.25"
       title: "Master Thesis"
       location: "ASL at ETH"
-      desc_direct: "<i>Exploring Aerial Manipulation with an Omnidirectional Hexacopter.</i>"
-      desc_bullet:
-        - "Vision based object tracking, implementation of controls with Riemannian Motion Policies and hardware design for aerial manipulation tasks with a six-degree-of-freedom hexacopter."
+      desc_direct: "<i>Exploring Aerial Manipulation with an Omnidirectional Hexacopter</i>"
+      desc_bullet: 
+        - "Demonstrated autonomous drone peg-in-hole insertion (8 mm hole) in extensive real-world flight tests"
+        - "Trained YOLO object detector & developed robust filtering for continuous target tracking"
+        - "Implemented Riemannian Motion Policy controller to steer the drone"
+        # - "Designed & fabricated end effectors to explore motion damping"
     - date_start: "03.24"
       date_end: "07.24"
       title: "Semester Thesis"
       location: "RSL at ETH"
-      desc_direct: "<i>Task Oriented Robotic Grasping for Robot-Human Handovers.</i>"
+      desc_direct: "<i>Task Oriented Robotic Grasping for Robot-Human Handovers</i>"
       desc_bullet:
-        - "Use of geometric deep learning for non-rigid 3D shape matching and texture transfer for segmentation of point clouds"
+        - "Transferred textures from reference objects to unseen point clouds using geometric deep learning"
+        - "Co-author of <i>Task-Oriented Robot-Human Handovers on Legged Manipulators</i>, HRI 2026"
     - date_start: "08.22"
       date_end: "01.23"
       title: "Exchange Semester in Barcelona"
@@ -34,16 +37,18 @@
   date_end: "01.22"
   title: "Bachelor's Degree: Mechanical Engineering"
   location: "ETH Zürich"
-  desc_direct: ""
-  desc_bullet:
-    - "Focus on Microsystems and Nanoscale Engineering"
+  desc_direct: "Focus on Microsystems and Nanoscale Engineering (GPA: 5.26/6.0)"
+  desc_bullet: 
   subitems:
     - date_start: "07.21"
       date_end: "01.22"
       title: "Bachelor Thesis"
       location: "MSRL at ETH"
-      desc_direct: "<i>Autonomous Steering of a Magnetic Catheter for Spinal Cord Stimulation.</i>"
+      desc_direct: "<i>Auton. Steering of a Magnetic Catheter for Spinal Cord Stimulation</i>"
       desc_bullet:
-        - "Design and fabrication of a magnetic catheter, steered via an autonomous control algorithm and tested in custom-developed epidural space models of the human spine"
+        - Steered catheter autonomously through 30 cm of epidural space
+        - Developed vision-based detection & magnetic field control algorithm
+        # - Fabricated magnetic catheter & silicone models of epidural space
+        
 
 

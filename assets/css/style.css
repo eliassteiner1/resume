@@ -62,7 +62,6 @@
     /* length units to have a consistent design */
     --len-1:     4px;
     --len-2:     8px;
-    --len-2med: 12px;
     --len-3:    16px;
     --len-3med: 24px;
     --len-4:    32px;
@@ -139,7 +138,7 @@ body {
     padding-inline: var(--len-4med);
     padding-block: var(--len-4);
     column-gap: var(--len-4); 
-    row-gap: var(--len-4);
+    row-gap: var(--len-3med);
     /* TEMP just to see if content is too much */
     overflow: hidden;
 }
@@ -171,10 +170,6 @@ body {
     width: 3px;
     height: 8px;
     background-color: var(--col-grey);
-}
-.bullet:has(+ .bullet) {
-    /* padding only BETWEEN two bullets */
-    /* margin-bottom: var(--len-1);  */
 }
 
 
@@ -240,7 +235,7 @@ body {
 .basecontainer-header {
     font-size: var(--fsize-up2);
     font-weight: var(--fwght-up3);
-    padding-top: 2px;
+    padding-top: 0.10lh;
 }
 .basecontainer-content {
     padding-top: var(--len-3);
@@ -310,9 +305,8 @@ body {
 }
 .timeline-item.subitem .timeline-desc,
 .timeline-item.subitem .timeline-title {
-    margin-left: var(--len-3med);
+    margin-left: var(--len-3);
 }
-
 
 
 /* skills =========================================================================================================== */
@@ -328,7 +322,7 @@ body {
 }
 .skills-subitem {
     font-weight: var(--fwght-up1);
-    margin-left: var(--len-3med);
+    margin-left: var(--len-3);
     margin-top: var(--len-1);
     font-variant: small-caps;
 }
