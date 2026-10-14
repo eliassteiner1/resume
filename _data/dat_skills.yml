@@ -1,9 +1,9 @@
 - name: "Programming"
   subitems:
-    - "Python (Libraries: Pytorch, OpenCV, Numpy, Pandas, Dash)"
-    - "C++ (basics)"
+    - "Python"
+    - "C++ (Basics)"
     - "HTML & CSS"
-    - "JavaScript (basics)"
+    - "JavaScript (Basics)"
 
 - name: "Development Tools"
   subitems:
@@ -13,7 +13,10 @@
 
 - name: "Design & Fabrication"
   subitems:
-    - "Various CAD [SolidWorks, Onshape, Siemens NX]"
+    - "Various CAD "
     - "3D Printing"
     - "Soldering"
     - "Machining"
+
+# (Pytorch, OpenCV, Numpy, Pandas, Dash)
+# (Onshape, Siemens NX, SolidWorks)

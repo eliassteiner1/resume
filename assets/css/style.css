@@ -25,6 +25,7 @@
 }
 
 
+
 /* ================================================================================================================== */
 /* GLOBAL FORMATTING HANDLES ======================================================================================== */
 /* ================================================================================================================== */
@@ -35,13 +36,13 @@
     /* color definitions */
     --col-black:  #100F0F;
     --col-white:  #FFFFFF;
-    --col-grey:   #b7b7b7;
+    --col-grey:   rgb(210, 210, 210);
     --col-accent: #4475A0;
     --col-accent-light: color-mix(in oklab, var(--col-accent) 60%, var(--col-white));
 
     /* font definitions */
     --root-font-fam: "EncodeSans-Variable";
-    --root-line-height: 1.08;
+    --root-line-height: 1.04;
     --root-fsize: 16px; /* just base definition, all fsize-... depend on rem and therefore this here */
     --root-fsize-ratio: 1.30;
 
@@ -61,7 +62,9 @@
 
     /* length units to have a consistent design */
     --len-1:     4px;
+    --len-1med:  6px;
     --len-2:     8px;
+    --len-2med: 12px;
     --len-3:    16px;
     --len-3med: 24px;
     --len-4:    32px;
@@ -77,6 +80,8 @@
     --portrait-width: 160px;
     --portrait-aspectr: 1.0;
     --date-width: 82px;
+    --h-bullets: 12px;
+    --w-bullets: 4px
 }
 
 
@@ -128,7 +133,7 @@ body {
     aspect-ratio: 1/sqrt(2); /* to get DIN A format */
     margin: 100px; /* just give the page some visual breathing room */ 
     display: grid;
-    grid-template-columns: minmax(0, 72fr) minmax(0, 28fr);
+    grid-template-columns: minmax(0, 74fr) minmax(0, 26fr);
     grid-template-rows: auto minmax(0, 1fr);
     grid-template-areas: 
         "person contact"
@@ -146,8 +151,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: start; /* move all the basecontainers to the start unless they flex grow themselves */
-    gap: var(--len-4); /* TODO figure out later */
-    /* background-color: rgb(200, 255, 255); */
 }
 .column-left {
     grid-area: left;
@@ -164,11 +167,11 @@ body {
 .bullet::before {
     content: "";
     position: absolute;
-    top: 0;
+    top: calc(0.5lh - 0.5*var(--h-bullets));
+    bottom: calc(0.5lh - 0.5*var(--h-bullets));
     left: 0;
-    translate: calc(-100% - var(--len-1)) calc(-50% + 0.5lh); /* to center the element */
-    width: 3px;
-    height: 8px;
+    translate: calc(-100% - var(--len-1)) 0; /* move to be exactly outside and then with some distance */
+    width: var(--w-bullets);
     background-color: var(--col-grey);
 }
 
@@ -230,15 +233,18 @@ body {
     border-top: 2px solid var(--col-black);
 }
 .basecontainer:not(:last-child) {
-    flex-grow: 0; /* only grow the non-last containers to still fill the page to the very bottom */
+    flex-grow: 1; /* only grow the non-last containers to still fill the page to the very bottom */
 }
 .basecontainer-header {
     font-size: var(--fsize-up2);
     font-weight: var(--fwght-up3);
-    padding-top: 0.10lh;
+    padding-top: 0.10lh; /* sliiightly move the top line away from title font */
 }
 .basecontainer-content {
     padding-top: var(--len-3);
+}
+.basecontainer:not(:last-child) .basecontainer-content {
+    padding-bottom: var(--len-3med);
 }
 
 
@@ -251,12 +257,12 @@ body {
         "date title loc"
         "x desc desc";
     align-items: baseline; /* correctly aligns fonts of multiple sizes at their baseline */
-    column-gap: var(--len-2);
 }
 .timeline-date {
     grid-area: date;
     display: flex;
     justify-content: space-between; /* start date left, end date right, dash centered in the remaining space */
+    overflow: hidden; /* to make it clear if the date column is chosen too narrow */
     font-stretch: var(--fwidth-narrow);
     color: var(--col-accent);
 }
@@ -264,12 +270,11 @@ body {
     grid-area: title;
     font-size: var(--fsize-up1);
     font-variant-caps: small-caps;
+    padding-inline: var(--len-2);
 }
 .timeline-location {
     grid-area: loc;
     text-align: right;
-    /* font-size: var(--fsize-up1); */
-    /* font-variant-caps: small-caps; */
     color: var(--col-accent);
 }
 .timeline-location:empty {
@@ -280,32 +285,33 @@ body {
     display: flex;
     flex-direction: column;
     text-align: justify;
+    gap: var(--len-1med); /* spacing between all description elements */
+    padding-top: var(--len-1); /* spacing between title and first elements needs to be a bit smaller */
+    padding-left: var(--len-2);
 }
 .timeline-desc > div:empty {
     display: none; /* hide if nothing specified */
 }
-.timeline-desc > div {
-    margin-top: var(--len-1);
-}
-.timeline-item.subitem .timeline-date,
-.timeline-item.subitem .timeline-title,
-.timeline-item.subitem .timeline-location {
-    font-weight: var(--fwght-up1);
+.timeline-item.subitem .timeline-desc,
+.timeline-item.subitem .timeline-title {
+    margin-left: var(--len-3); /* indentation for subitems */
 }
 .timeline-item:not(.subitem) .timeline-date,
 .timeline-item:not(.subitem) .timeline-title,
 .timeline-item:not(.subitem) .timeline-location {
-    font-weight: var(--fwght-up2);
+    font-weight: var(--fwght-up2); /* font size for main items */
 }
+.timeline-item.subitem .timeline-date,
+.timeline-item.subitem .timeline-title,
+.timeline-item.subitem .timeline-location {
+    font-weight: var(--fwght-up1); /* font size for subitems */
+}
+
 .timeline-item:not(:has(+ .subitem)):not(:last-child) {
-    margin-bottom: var(--len-3);
+    margin-bottom: var(--len-3); /* separation between main block */
 }
 .timeline-item:has(+ .subitem) {
-    margin-bottom: var(--len-2);
-}
-.timeline-item.subitem .timeline-desc,
-.timeline-item.subitem .timeline-title {
-    margin-left: var(--len-3);
+    margin-bottom: var(--len-2med); /* separation within subitem block */
 }
 
 
@@ -318,13 +324,18 @@ body {
     font-variant: small-caps;
 }
 .skills-category:not(:first-child) {
-    margin-top: var(--len-2);
+    margin-top: var(--len-2med); /* main block separation */
 }
 .skills-subitem {
     font-weight: var(--fwght-up1);
     margin-left: var(--len-3);
-    margin-top: var(--len-1);
     font-variant: small-caps;
+}
+.skills-subitem + .skills-subitem {
+    margin-top: var(--len-1med);
+}
+.skills-category + .skills-subitem {
+    margin-top: var(--len-1);
 }
 
 
@@ -341,7 +352,7 @@ body {
     align-items: baseline; /* correctly aligns fonts of multiple sizes at their baseline */
 }
 .langs-item:not(:first-child) {
-    margin-top: var(--len-2);
+    margin-top: var(--len-2med);
 }
 .langs-name {
     grid-area: name;
@@ -374,11 +385,17 @@ body {
     font-variant: small-caps;
 }
 .extracurr-item:not(:first-child) {
-    margin-top: var(--len-2);
+    margin-top: var(--len-3);
 }
 .extracurr-subitem {
     text-align: justify;
-    margin-top: var(--len-1);
+}
+
+.extracurr-item + .extracurr-subitem {
+    margin-top: var(--len-1med);
+}
+.extracurr-subitem + .extracurr-subitem {
+    margin-top: var(--len-2med);
 }
 
 

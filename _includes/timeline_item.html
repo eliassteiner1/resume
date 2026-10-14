@@ -1,15 +1,26 @@
 <div class="timeline-item{% if include.sub %} subitem{% endif %}">
+    
     <div class="timeline-date">
         <span>{{ include.item.date_start }}</span>
         <span>-</span>
         <span>{{ include.item.date_end }}</span>
     </div>
+    
     <div class="timeline-title">{{ include.item.title }}</div>
-    <div class="timeline-location">{{ include.item.location }}</div>
-    <div class="timeline-desc">
-        <div>{{ include.item.desc_direct }}</div>
-        {% for point in include.item.desc_bullet %}
-            <div class="bullet">{{ point }}</div>
-        {% endfor %}
-    </div>
+    
+    {% if include.item.location %}
+        <div class="timeline-location">{{ include.item.location }}</div>
+    {% endif %}
+    
+    <!-- only actually create a description if it has content -->
+    {% if include.item.desc_direct or include.item.desc_bullet %}
+        <div class="timeline-desc">
+            <!-- include a direct description only if it actually has content -->
+            {% if include.item.desc_direct %}<div>{{ include.item.desc_direct }}</div>{% endif %}
+            {% for point in include.item.desc_bullet %}
+                <div class="bullet">{{ point }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
 </div>

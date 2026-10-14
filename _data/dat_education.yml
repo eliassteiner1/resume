@@ -6,7 +6,7 @@
   title: "Master's Degree: Mechanical Engineering"
   location: "ETH Zürich"
   desc_direct: "Focus on Robotics, Machinelearning and Computer Vision (GPA: 5.40/6.0)"
-  desc_bullet: []
+  desc_bullet: 
   subitems:
     - date_start: "10.24"
       date_end: "06.25"
@@ -30,8 +30,8 @@
       date_end: "01.23"
       title: "Exchange Semester in Barcelona"
       location: "UPC"
-      desc_direct: ""
-      desc_bullet: []
+      desc_direct:
+      desc_bullet:
 
 - date_start: "09.18"
   date_end: "01.22"

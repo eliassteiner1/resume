@@ -5,7 +5,7 @@
   date_end: "02.26"
   title: "Civil Service: Medical Robotics"
   location: "Balgrist"
-  desc_direct: ""
+  desc_direct:
   desc_bullet:
     - "Curated & synchronized multi-view surgical footage dataset (20-30 cameras) for 3D scene reconstruction using Gaussian Splatting"
     - "Developed tool to detect camera drift using keypoint detection & feature matching"
@@ -16,7 +16,7 @@
   date_end: "01.25"
   title: "Student Job: Data Analysis"
   location: "Sensirion"
-  desc_direct: ""
+  desc_direct:
   desc_bullet:
     - "Analyzed wind & methane sensor data to localize gas leaks"
     - "Prototyped ML & algorithmic approaches to automate leak localization on own initiative"
@@ -25,7 +25,7 @@
   date_end: "06.24"
   title: "Teaching Assistance for Mechanics II"
   location: "ETH Zürich"
-  desc_direct: ""
+  desc_direct:
   desc_bullet:
     - "Taught classes of 20-50 students with self-developed teaching materials"
 
@@ -33,7 +33,7 @@
   date_end: "06.22"
   title: "Internship: R&D of Cardiovascular Implants"
   location: "Biotronik"
-  desc_direct: ""
+  desc_direct:
   desc_bullet:
     - "Investigated manufacturing defects by injecting fluorescent dye to reveal glue failures"
     - "Helped develop test methods for stents under the revised ISO 25539-2"
