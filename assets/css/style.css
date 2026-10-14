@@ -164,16 +164,16 @@ body {
     position: relative;
     text-align: justify;
 }
-.bullet::before {
+/* .bullet::before {
     content: "";
     position: absolute;
     top: calc(0.5lh - 0.5*var(--h-bullets));
     bottom: calc(0.5lh - 0.5*var(--h-bullets));
     left: 0;
-    translate: calc(-100% - var(--len-1)) 0; /* move to be exactly outside and then with some distance */
+    translate: calc(-100% - var(--len-1)) 0; 
     width: var(--w-bullets);
     background-color: var(--col-grey);
-}
+} */
 
 
 /* Top Elements ===================================================================================================== */
