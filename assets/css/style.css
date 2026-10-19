@@ -185,7 +185,7 @@ body {
     flex-direction: column;
     text-align: right;
     font-family: "NotoSansMono-Variable";
-    font-stretch: 85%;
+    font-stretch: 100%;
 }
 .contact-spacer {
     height: var(--w-line-basecontainer);
@@ -195,10 +195,10 @@ body {
 .contact-link {
     align-self: end;
     font-family: "NotoSansMono-Variable";
-}
-.contact-link > :nth-child(2) {
     font-weight: var(--fwght-up1);
+    padding-top: var(--len-3);
 }
+
 
 
 /* Basecontainer ==================================================================================================== */
