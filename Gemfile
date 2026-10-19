@@ -1,3 +1,4 @@
 source "https://rubygems.org"
 
 gem "jekyll", "~> 4.3"
+gem 'wdm', '>= 0.1.0'

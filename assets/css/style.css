@@ -41,18 +41,16 @@
     /* font definitions */
     --root-font-fam:    "EncodeSans-Variable";
     --root-line-height: 1.04;
-    --root-fsize:       16px; /* just base definition, all fsize-... depend on rem and therefore this here */
-    --root-fsize-ratio: 1.30;
+    --root-fsize:       14px; /* just base definition, all fsize-... depend on rem and therefore this here */
+    --root-fsize-ratio: 1.25;
 
     --fsize-base: 1rem;
     --fsize-up1:  calc(1rem * pow(var(--root-fsize-ratio), 1));
     --fsize-up2:  calc(1rem * pow(var(--root-fsize-ratio), 2));
-    --fsize-up3:  calc(1rem * pow(var(--root-fsize-ratio), 3));
 
     --fwght-base: 200;
-    --fwght-up1:  450;
-    --fwght-up2:  600;
-    --fwght-up3:  700;
+    --fwght-up1:  480;
+    --fwght-up2:  650;
 
     --fwidth-base:   115%;
     --fwidth-narrow:  75%;
@@ -68,6 +66,8 @@
     --len-4:    calc(var(--len-base) * pow(2, 3));
     --len-4med: calc(var(--len-base) * pow(2, 3.5));
     --len-5:    calc(var(--len-base) * pow(2, 4));
+    --len-5med: calc(var(--len-base) * pow(2, 4.5));
+    --len-6:    calc(var(--len-base) * pow(2, 5));
 
     /* border radiuses */
     --rad-1: 12px;
@@ -75,7 +75,7 @@
 
     /* random handles */
     --w-line-basecontainer: 2px;
-    --portrait-width: 160px;
+    --portrait-width: 140px;
     --portrait-aspectr: 1.0;
     --date-width: 82px;
 }
@@ -131,15 +131,18 @@ body {
         "person contact"
         "left right";
     /* TODO figure out padding for main page things */
-    padding-inline: var(--len-5);
-    padding-block: var(--len-3med);
-    column-gap: var(--len-3med); 
-    row-gap: var(--len-3med);
+    padding-left: var(--len-5med);
+    padding-right: var(--len-4med);
+    padding-block: var(--len-4med);
+    column-gap: var(--len-4med); 
+    row-gap: var(--len-4med);
 }
 .column {
     display: flex;
     flex-direction: column;
     justify-content: start; /* move all the basecontainers to the start unless they flex grow themselves */
+
+    /* background-color: rgb(230, 255, 255); */
 }
 .column-left {
     grid-area: left;
@@ -174,18 +177,16 @@ body {
 }
 .person-name {
     grid-area: name;
-    font-size: var(--fsize-up3);
-    font-weight: var(--fwght-up3);
+    font-size: var(--fsize-up2);
+    font-weight: var(--fwght-up2);
 }
 .person-role {
     grid-area: role;
     font-size: var(--fsize-up2);
-    font-weight: var(--fwght-up1);
 }
 .person-link {
     grid-area: link;
     align-self: end;
-    font-size: var(--fsize-up1);
 }
 
 
@@ -208,15 +209,15 @@ body {
     flex-grow: 1; /* only grow the non-last containers to still fill the page to the very bottom */
 }
 .basecontainer-header {
-    font-size: var(--fsize-up2);
+    font-size: var(--fsize-up1);
     font-weight: var(--fwght-up2);
     padding-top: 0.10lh; /* sliiightly move the top line away from title font */
 }
 .basecontainer-content {
-    padding-top: var(--len-3);
+    padding-top: var(--len-3med);
 }
 .basecontainer:not(:last-child) .basecontainer-content {
-    padding-bottom: var(--len-3med);
+    padding-bottom: var(--len-4);
 }
 
 
@@ -235,18 +236,19 @@ body {
     display: flex;
     justify-content: space-between; /* start date left, end date right, dash centered in the remaining space */
     overflow: hidden; /* to make it clear if the date column is chosen too narrow */
+    font-variant-numeric: tabular-nums;
     font-stretch: var(--fwidth-narrow);
     color: var(--col-accent);
 }
 .timeline-title {
     grid-area: title;
-    font-size: var(--fsize-up1);
     font-variant-caps: small-caps;
-    padding-inline: var(--len-2);
+    padding-inline: var(--len-3);
 }
 .timeline-location {
     grid-area: loc;
     text-align: right;
+    font-variant: small-caps;
     color: var(--col-accent);
 }
 .timeline-desc {
@@ -255,8 +257,8 @@ body {
     flex-direction: column;
     text-align: justify;
     gap: var(--len-1med); /* spacing between all description elements */
-    padding-top: var(--len-1); /* spacing between title and first elements needs to be a bit smaller */
-    padding-left: var(--len-2);
+    padding-top: var(--len-1med);
+    padding-left: var(--len-3);
 }
 .timeline-desc > div:has(.stretch) {
     /* kinda hacky. the thesis titles should be fully stretched no matter what. for this an empty span is added to it's div with the class justify. this is the only way to target only these few divs */
@@ -274,21 +276,20 @@ body {
 }
 
 .timeline-item:not(:has(+ .subitem)):not(:last-child) {
-    margin-bottom: var(--len-3); /* separation between main block */
+    margin-bottom: var(--len-3med); /* separation between main block */
 }
 .timeline-item:has(+ .subitem) {
-    margin-bottom: var(--len-1med); /* separation within subitem block */
+    margin-bottom: var(--len-2); /* separation within subitem block */
 }
 
 
 /* skills =========================================================================================================== */
 .skills-category {
-    font-size: var(--fsize-up1);
     font-weight: var(--fwght-up2);
     font-variant: small-caps;
 }
 .skills-category:not(:first-child) {
-    margin-top: var(--len-2med); /* main block separation */
+    margin-top: var(--len-3); /* main block separation */
 }
 .skills-subitem {
     font-weight: var(--fwght-up1);
@@ -297,10 +298,10 @@ body {
     text-align: justify;
 }
 .skills-subitem + .skills-subitem {
-    margin-top: var(--len-1med);
+    margin-top: var(--len-2); /* separation within block */
 }
 .skills-category + .skills-subitem {
-    margin-top: var(--len-1);
+    margin-top: var(--len-1med);
 }
 
 
@@ -315,17 +316,17 @@ body {
     align-items: baseline; /* correctly aligns fonts of multiple sizes at their baseline */
 }
 .langs-item:not(:first-child) {
-    margin-top: var(--len-2med);
+    margin-top: var(--len-3);
 }
 .langs-name {
     grid-area: name;
-    font-size: var(--fsize-up1);
     font-weight: var(--fwght-up2);
     font-variant: small-caps;
 }
 .langs-level {
     grid-area: level;
     font-weight: var(--fwght-up2);
+    font-variant: small-caps;
     color: var(--col-accent);
 }
 .langs-desc {
@@ -340,22 +341,21 @@ body {
 
 /* Extracurricular ================================================================================================== */
 .extracurr-item {
-    font-size: var(--fsize-up1);
     font-weight: var(--fwght-up2);
     font-variant: small-caps;
 }
 .extracurr-item:not(:first-child) {
-    margin-top: var(--len-3);
+    margin-top: var(--len-3med);
 }
 .extracurr-subitem {
     text-align: justify;
 }
 
 .extracurr-item + .extracurr-subitem {
-    margin-top: var(--len-1med);
+    margin-top: var(--len-2);
 }
 .extracurr-subitem + .extracurr-subitem {
-    margin-top: var(--len-2med);
+    margin-top: var(--len-3);
 }
 
 
