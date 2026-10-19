@@ -1,7 +1,7 @@
 // Stretch the last line of justified text if it already fills most of the line anyway.
 // Otherwise a nearly-full last line sits slightly ragged next to the justified lines above it.
 
-const STRETCH_THRESHOLD = 0.90; // last line width / available width above which it gets stretched
+const STRETCH_THRESHOLD = 0.92 // last line width / available width above which it gets stretched
 
 // the nearest non-inline ancestors of all text, if justified (text-align-last has no effect on inline elements like <i>)
 function getJustifiedTextEls() {

@@ -5,7 +5,7 @@
 
 - name: "English"
   level: "C1-C2"
-  desc: "At least CAE in 2015"
+  desc: "At least CAE from 2015"
 
 - name: "Spanish"
   level: "B2-C1"
@@ -13,4 +13,4 @@
 
 - name: "French"
   level: "B1"
-  desc: "Basic knowledge from school"
+  desc: "Basic knowledge from high school"

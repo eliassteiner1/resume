@@ -6,7 +6,7 @@
   title: "MSc Mechanical Engineering"
   location: "ETH Zürich"
   desc:
-    - "Focus on Robotics, Machinelearning and Computer Vision (GPA: 5.40/6.0)"
+    - "Focus on Robotics, Machine Learning and Computer Vision (GPA: 5.40/6.0)"
   subitems:
     - date_start: "10.24"
       date_end: "06.25"
@@ -15,8 +15,9 @@
       desc:
         - "Title: <i>Exploring Aerial Manipulation with an Omnidirectional Hexacopter</i>"
         - "Demonstrated autonomous drone peg-in-hole insertion (8 mm hole) in extensive real-world flight tests"
-        - "Trained YOLO object detector & developed robust filtering for continuous target tracking"
-        - "Implemented Riemannian Motion Policy controller to steer the drone"
+        - "Trained YOLO object detector & developed robust filtering for continuous single-target tracking"
+        - "Implemented Riemannian Motion Policy controller for full 6 DoF actuation"
+        # - "Implemented Riemannian Motion Policy controller exploiting the drone's full 6-DoF actuation"
         # - "Designed & fabricated end effectors to explore motion damping"
     - date_start: "03.24"
       date_end: "07.24"
@@ -24,8 +25,8 @@
       location: "Robotic Systems Lab (ETH)"
       desc:
         - "Title: <i>Task Oriented Robotic Grasping for Robot-Human Handovers</i>"
-        - "Transferred textures from reference objects to unseen point clouds using geometric deep learning"
-        - "Co-author of <i>Task-Oriented Robot-Human Handovers on Legged Manipulators</i>, HRI 2026"
+        - "Transferred segmentation maps from reference objects to unseen point clouds of the same object category using geometric deep learning"
+        - "Co-author of the paper <i>Task-Oriented Robot-Human Handovers on Legged Manipulators</i>, HRI 2026"
     - date_start: "08.22"
       date_end: "01.23"
       title: "Exchange Semester"
@@ -45,8 +46,8 @@
       location: "Multi-Scale Robotics Lab (ETH)"
       desc:
         - "Title: <i>Auton. Steering of a Magnetic Catheter for Spinal Cord Stimulation</i>"
-        - Steered catheter autonomously through 30 cm of epidural space
-        - Developed vision-based detection & magnetic field control algorithm
+        - Steered a catheter autonomously through 30 cm of self-made silicone epidural space model
+        - Developed vision-based detection & external magnetic field control algorithm
         # - Fabricated magnetic catheter & silicone models of epidural space
         
 

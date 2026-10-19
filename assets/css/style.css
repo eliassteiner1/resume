@@ -99,6 +99,7 @@ html {
   font-weight: var(--fwght-base);
   font-stretch: var(--fwidth-base);
   line-height: var(--root-line-height);
+  hyphens: auto;
 }
 
 
@@ -119,7 +120,7 @@ body {
     aspect-ratio: 1/sqrt(2); /* to get DIN A format */
     margin: 100px; /* just give the page some visual breathing room */ 
     display: grid;
-    grid-template-columns: minmax(0, 72fr) minmax(0, 28fr);
+    grid-template-columns: minmax(0, 73fr) minmax(0, 27fr);
     grid-template-rows: auto minmax(0, 1fr);
     grid-template-areas: 
         "person x"

@@ -7,7 +7,7 @@
   location: "Balgrist Zürich"
   desc:
     - "Curated & synchronized multi-view surgical footage dataset (20-30 cameras) for 3D scene reconstruction using Gaussian Splatting"
-    - "Developed tool to detect camera drift using keypoint detection & feature matching"
+    - "Developed tool to detect camera drift over long recordings using keypoint detection & feature matching"
     - "Reprogrammed microcontroller of LED-clock for camera synchronization panel & adapted its visual detection script"
     # - "Labelled multi-view footage for a hand pose estimation dataset"
 
@@ -16,8 +16,8 @@
   title: "Student Job: Data Analysis"
   location: "Sensirion Stäfa"
   desc:
-    - "Analyzed wind & methane sensor data to localize gas leaks"
-    - "Prototyped ML & algorithmic approaches to automate leak localization on own initiative"
+    - "Analyzed wind & methane concentration sensor data to localize gas leaks"
+    - "Prototyped algorithmic & learned approaches to automate leak localization on own initiative"
 
 - date_start: "02.20"
   date_end: "06.24"
@@ -28,8 +28,8 @@
 
 - date_start: "02.22"
   date_end: "06.22"
-  title: "Intern: R&D Cardiovascular Implants"
+  title: "Intern: R&D of Cardiovascular Implants"
   location: "Biotronik Bülach"
   desc:
-    - "Discovered manufacturing defects in catheters by injecting fluorescent dye to reveal glue failures"
     - "Helped develop test methods for stents under the revised ISO 25539-2"
+    - "Discovered manufacturing defects in catheters by injecting fluorescent dye to reveal glue failures"
