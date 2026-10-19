@@ -127,18 +127,14 @@ body {
         "left right";
     padding-left: var(--len-5med);
     padding-right: var(--len-4med);
-    padding-block: var(--len-4med);
+    padding-block: var(--len-5);
     column-gap: var(--len-4med); 
     row-gap: var(--len-4med);
-
-    position: relative;
 }
 .column {
     display: flex;
     flex-direction: column;
     justify-content: start; /* move all the basecontainers to the start unless they flex grow themselves */
-
-    /* background-color: rgb(230, 255, 255); */
 }
 .column-left {
     grid-area: left;
