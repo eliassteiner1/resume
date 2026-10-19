@@ -3,13 +3,6 @@
 /* ================================================================================================================== */
 
 @font-face {
-    font-family: 'Synonym-Variable';
-    src: url('../fonts/Synonym-Variable.woff2') format('woff2');
-    font-weight: 200 700;
-    font-display: swap; /* what to do with font while file is still downloading */
-    font-style: normal;
-}
-@font-face {
     font-family: 'EncodeSans-Variable';
     src: url('../fonts/EncodeSans-Variable.woff2') format('woff2');
     font-weight: 100 900;
@@ -76,7 +69,7 @@
     /* random handles */
     --w-line-basecontainer: 2px;
     --portrait-width: 140px;
-    --portrait-aspectr: 1.0;
+    --portrait-aspectr: 0.9;
     --date-width: 82px;
 }
 
@@ -125,17 +118,18 @@ body {
     aspect-ratio: 1/sqrt(2); /* to get DIN A format */
     margin: 100px; /* just give the page some visual breathing room */ 
     display: grid;
-    grid-template-columns: minmax(0, 74fr) minmax(0, 26fr);
+    grid-template-columns: minmax(0, 72fr) minmax(0, 28fr);
     grid-template-rows: auto minmax(0, 1fr);
     grid-template-areas: 
         "person contact"
         "left right";
-    /* TODO figure out padding for main page things */
     padding-left: var(--len-5med);
     padding-right: var(--len-4med);
     padding-block: var(--len-4med);
     column-gap: var(--len-4med); 
     row-gap: var(--len-4med);
+
+    position: relative;
 }
 .column {
     display: flex;
@@ -185,18 +179,25 @@ body {
     font-size: var(--fsize-up2);
 }
 .person-link {
-    grid-area: link;
     align-self: end;
+    font-family: "NotoSansMono-Variable";
+    text-align: justify;
 }
-
+.person-link > :nth-child(2) {
+    margin-top: var(--len-1med);
+    font-weight: var(--fwght-up1);
+    
+}
 
 /* Contact ------------------------------------------------------------------ */
 .contact {
     grid-area: contact;
     display: flex;
     flex-direction: column;
-    gap: var(--len-3);
     text-align: right;
+    font-family: "NotoSansMono-Variable";
+    font-stretch: 85%;
+    gap: var(--len-2med);
 }
 
 
@@ -259,10 +260,6 @@ body {
     gap: var(--len-1med); /* spacing between all description elements */
     padding-top: var(--len-1med);
     padding-left: var(--len-3);
-}
-.timeline-desc > div:has(.stretch) {
-    /* kinda hacky. the thesis titles should be fully stretched no matter what. for this an empty span is added to it's div with the class justify. this is the only way to target only these few divs */
-    text-align-last: justify;
 }
 .timeline-item:not(.subitem) .timeline-date,
 .timeline-item:not(.subitem) .timeline-title,

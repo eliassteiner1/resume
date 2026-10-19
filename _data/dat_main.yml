@@ -1,10 +1,12 @@
 name: "Elias Steiner"
 role: "MSc Mechanical Engineering"
-link: "collection of projects and academic work: <br>eliassteiner1.github.io/portfolio"
+link_desc: "collection of various projects and academic work:"
+link_link: "eliassteiner1.github.io/portfolio"
+
 email: "elias.steiner@gmx.ch"
 phone: "+41 76 680 90 20"
-address: "Langfurrenstrasse 25 <br>8623 Wetzikon (CH)"
-linkedin: "www.linkedin.com/in/ <br>elias-simon-steiner"
+address: "Langfurrenstrasse 25 <br>8623 Wetzikon"
+linkedin: "linkedin.com/in/ <br>elias-simon-steiner"
 
 title_workexp: "Work Experience"
 title_education: "Education"
@@ -13,3 +15,6 @@ title_otherexp: "Other Experience"
 title_skills: "Skills"
 title_langs: "Languages"
 title_extracurr: "Extracurricular"
+
+
+

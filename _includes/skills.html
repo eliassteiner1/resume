@@ -1,13 +1,13 @@
 <!-- main content -->
 {% capture content %}
+
     {% for item in site.data.dat_skills %}
-    
         <div class="skills-category">{{ item.name }}</div>
         {% for subitem in item.subitems %}
             <div class="skills-subitem">{{ subitem }}</div>
         {% endfor %}
-
     {% endfor %}
+
 {% endcapture %}
 
 
